@@ -17,3 +17,33 @@ export const GET = async (request, { params }) => {
     return NextResponse.json({ error }, { status: 404 })
   }
 }
+
+export const POST = async (request, { params }) => {
+  // Post comment to post
+  try {
+    const { id } = params
+    const body = await request.json()
+    const { content, email } = body
+
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email
+      }
+    })
+    if (!user) return NextResponse.error(new Error('User not found'))
+
+    const comment = await prisma.comment.create({
+      data: {
+        content: content,
+        authorId: user.id,
+        postId: id
+      }
+    })
+    if (!comment) return NextResponse.error(new Error('Comment not created'))
+
+    return NextResponse.json(comment)
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ error }, { status: 404 })
+  }
+}
