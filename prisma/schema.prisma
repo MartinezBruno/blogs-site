@@ -20,3 +20,24 @@ model User {
   bio       String?
   possiton  String?
 }
+
+model Post {
+  id        String    @id @default(uuid()) @map("_id")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  title     String
+  banner    String?
+  content   String?
+  authorId  String
+  comments  Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid()) @map("_id")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content   String?
+  authorId  String
+  postId    String
+  Post      Post     @relation(fields: [postId], references: [id])
+}
