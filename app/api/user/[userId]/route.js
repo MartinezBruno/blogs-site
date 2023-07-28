@@ -1,0 +1,24 @@
+import prisma from '@/app/lib/prismadb'
+import { NextResponse } from 'next/server'
+
+export const PATCH = async (request, { params }) => {
+  try {
+    // get the user id from params and update there biography or other details depending on the request body
+    const { userId } = params
+    const body = await request.json()
+    const user = await prisma.user.update({
+      where: {
+        id: userId
+      },
+      data: {
+        ...body
+      }
+    })
+    if (!user) return NextResponse.error(new Error('User not found'))
+
+    return NextResponse.json(user)
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ error }, { status: 404 })
+  }
+}

@@ -18,7 +18,7 @@ model User {
   username  String?
   image     String?
   bio       String?
-  possiton  String?
+  position  String?
 }
 
 model Post {
