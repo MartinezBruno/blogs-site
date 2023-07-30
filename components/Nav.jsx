@@ -9,9 +9,9 @@ import MobileNav from './MobileNav'
 
 const scrollFunction = () => {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById('navbar').style.background = '#FFFFFF'
+    document.getElementById('navbar').style.backdropFilter = 'blur(8px)'
   } else {
-    document.getElementById('navbar').style.background = 'transparent'
+    document.getElementById('navbar').style.backdropFilter = 'blur(0px)'
   }
 }
 
@@ -39,7 +39,7 @@ const Nav = () => {
 
   return (
     <nav
-      className='flex justify-between w-full bg-transparent sticky top-0 z-50'
+      className='flex justify-between w-full transition-all fixed top-0 z-50'
       id='navbar'>
       {/* Desktop nav */}
       <div className='sm:flex w-full justify-between items-center hidden c-container'>
@@ -114,7 +114,7 @@ const Nav = () => {
       </div>
 
       {/* Mobile Nav */}
-      <div className='sm:hidden w-full flex justify-between relative'>
+      <div className='sm:hidden w-full flex justify-between relative p-3'>
         <Hamburger toggleMenu={handleToggleMobileMenu} />
         <span className='text-2xl text-yellow font-bold'>MyTeam.</span>
         {session?.user ? (

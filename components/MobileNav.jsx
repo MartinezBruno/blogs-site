@@ -6,8 +6,8 @@ const MobileNav = ({ isActive, handleClose }) => {
     <div
       className={
         isActive
-          ? 'absolute -top-[0.75rem] -left-[0.75rem] p-4 w-full h-screen bg-white z-10 translate-x-0 transition-all duration-500'
-          : 'absolute -translate-x-96 transition-all h-0 duration-500'
+          ? 'absolute top-0 left-0 p-4 w-1/3 h-screen bg-white z-10 translate-x-0 transition-all duration-500'
+          : 'absolute top-0 left-0 -translate-x-96 transition-all h-screen duration-500'
       }>
       <Close handleClose={handleClose} />
       <div className='flex flex-col mt-5 w-full relative'>
