@@ -1,27 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  font-family: 'Mulish', sans-serif;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.heading1 {
+  @apply text-5xl font-extrabold leading-normal;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.heading2 {
+  @apply text-[32px] font-normal leading-normal;
+}
+
+.heading3 {
+  @apply text-[24px] font-normal leading-normal;
+}
+
+.heading4 {
+  @apply text-base font-extrabold leading-normal tracking-[1.6px];
+}
+
+.paragraph {
+  @apply text-lg font-semibold leading-normal tracking-[163.15%];
+}
+
+.caption {
+  @apply text-sm font-semibold leading-normal tracking-[150%];
+}
+
+.link {
+  @apply text-blue text-base font-bold tracking-[175%] underline;
+}
+
+.nav-link {
+  /* Mobile nav button */
+  @apply text-base font-bold tracking-[175%] underline;
+}
+
+.c-container {
+  @apply max-w-[1140px] mx-auto p-3;
 }

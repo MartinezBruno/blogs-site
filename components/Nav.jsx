@@ -4,12 +4,31 @@ import { getProviders, signIn, signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Hamburger from './Icons/Hamburger'
+import MobileNav from './MobileNav'
+
+window.onscroll = function () {
+  scrollFunction()
+}
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById('navbar').style.background = '#FFFFFF'
+  } else {
+    document.getElementById('navbar').style.background = 'transparent'
+  }
+}
 
 const Nav = () => {
   const { data: session } = useSession()
 
   const [providers, setProviders] = useState(null)
   const [toggleDropdown, setToggleDropdown] = useState(false)
+  const [toggleMobileMenu, setToggleMobileMenu] = useState(false)
+
+  const handleToggleMobileMenu = () => {
+    setToggleMobileMenu(prev => !prev)
+  }
 
   useEffect(() => {
     const setProvidersData = async () => {
@@ -20,64 +39,85 @@ const Nav = () => {
   }, [])
 
   return (
-    <nav className='flex justify-between w-full mb-16 pt-3'>
-      <Link
-        href='/'
-        className='flex gap-2 flex-center'>
-        <Image
-          src='/assets/images/logo.svg'
-          alt='site logo'
-          width={30}
-          height={30}
-          className='object-contain'
-        />
-      </Link>
-
+    <nav className='flex justify-between w-full bg-transparent sticky top-0 z-50' id='navbar'>
       {/* Desktop nav */}
-      <div className='sm:flex hidden'>
-        {session?.user ? (
-          <div className='flex gap-3 md:gap-5'>
-            <Link
-              href='/create-prompt'
-              className='black_btn'>
-              Create Post
-            </Link>
-            <button
-              type='button'
-              onClick={signOut}
-              className='outline_btn'>
-              Sign Out
-            </button>
-            <Link href='/profile'>
+      <div className='sm:flex w-full justify-between items-center hidden c-container'>
+        <span className='text-2xl text-yellow font-bold'>MyTeam.</span>
+        <div className='flex justify-end items-center w w-full gap-10 relative'>
+          <Link
+            href='#about-us'
+            className='text-white font-semibold'>
+            About Us
+          </Link>
+          <Link
+            href='#support'
+            className='text-white font-semibold'>
+            Support
+          </Link>
+          <Link
+            href='/blog'
+            className='text-white font-semibold'>
+            Blog
+          </Link>
+          {session?.user ? (
+            <div className=''>
               <Image
                 src={session?.user.image}
                 width={37}
                 height={37}
                 className='rounded-full'
                 alt='profile icon'
+                onClick={() => setToggleDropdown(prev => !prev)}
               />
-            </Link>
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map(provider => (
-                <button
-                  type='button'
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className='black_btn'>
-                  Sign In
-                </button>
-              ))}
-          </>
-        )}
+              {toggleDropdown && (
+                <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
+                  <Link
+                    href='/profile'
+                    className='dropdown_link'
+                    onClick={() => setToggleDropdown(false)}>
+                    My profile
+                  </Link>
+                  <Link
+                    href='/create-blog'
+                    className='dropdown_link'
+                    onClick={() => setToggleDropdown(false)}>
+                    Create Blog
+                  </Link>
+                  <button
+                    type='button'
+                    onClick={() => {
+                      setToggleDropdown(false)
+                      signOut()
+                    }}
+                    className='mt-5 text-start'>
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              {providers &&
+                Object.values(providers).map(provider => (
+                  <button
+                    type='button'
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                    className='text-base font-bold leading-[150%] text-white bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'>
+                    Get access
+                  </button>
+                ))}
+            </>
+          )}
+        </div>
       </div>
 
       {/* Mobile Nav */}
-      <div className='sm:hidden flex relative'>
+      <div className='sm:hidden w-full flex justify-between relative'>
+        <Hamburger toggleMenu={handleToggleMobileMenu} />
+        <span className='text-2xl text-yellow font-bold'>MyTeam.</span>
         {session?.user ? (
-          <div className='flex'>
+          <div className='flex max-h-[37px]'>
             <Image
               src={session?.user.image}
               width={37}
@@ -87,7 +127,7 @@ const Nav = () => {
               onClick={() => setToggleDropdown(prev => !prev)}
             />
             {toggleDropdown && (
-              <div className='dropdown'>
+              <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
                 <Link
                   href='/profile'
                   className='dropdown_link'
@@ -95,10 +135,10 @@ const Nav = () => {
                   My profile
                 </Link>
                 <Link
-                  href='/create-prompt'
+                  href='/create-blog'
                   className='dropdown_link'
                   onClick={() => setToggleDropdown(false)}>
-                  Create Prompt
+                  Create Blog
                 </Link>
                 <button
                   type='button'
@@ -106,7 +146,7 @@ const Nav = () => {
                     setToggleDropdown(false)
                     signOut()
                   }}
-                  className='mt-5 w-full black_btn'>
+                  className='mt-5 text-start'>
                   Sign Out
                 </button>
               </div>
@@ -120,12 +160,16 @@ const Nav = () => {
                   type='button'
                   key={provider.name}
                   onClick={() => signIn(provider.id)}
-                  className='black_btn'>
-                  Sign In
+                  className='text-base font-bold leading-[150%] text-white bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'>
+                  Get access
                 </button>
               ))}
           </>
         )}
+        <MobileNav
+          isActive={toggleMobileMenu}
+          handleClose={handleToggleMobileMenu}
+        />
       </div>
     </nav>
   )

@@ -7,6 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'mulish': ['Mulish', 'sans-serif']
+      },
+      colors: {
+        black: '#25313C',
+        yellow: '#FB0',
+        blue: '#5A4FF3'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
