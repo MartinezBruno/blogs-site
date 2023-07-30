@@ -29,7 +29,7 @@ const Hero = () => {
             />
             <button
               type='submit'
-              className='text-white text-base font-bold leading-[150%] bg-yellow rounded px-6 py-3'>
+              className='text-white text-base font-bold leading-[150%] bg-yellow rounded px-6 py-3 hover:bg-yellow/90 transition-colors ease-in-out'>
               Get early access
             </button>
           </form>
