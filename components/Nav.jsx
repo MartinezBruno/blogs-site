@@ -7,11 +7,7 @@ import { useEffect, useState } from 'react'
 import Hamburger from './Icons/Hamburger'
 import MobileNav from './MobileNav'
 
-window.onscroll = function () {
-  scrollFunction()
-}
-
-function scrollFunction() {
+const scrollFunction = () => {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     document.getElementById('navbar').style.background = '#FFFFFF'
   } else {
@@ -36,10 +32,15 @@ const Nav = () => {
       setProviders(providers)
     }
     setProvidersData()
+    window.onscroll = function () {
+      scrollFunction()
+    }
   }, [])
 
   return (
-    <nav className='flex justify-between w-full bg-transparent sticky top-0 z-50' id='navbar'>
+    <nav
+      className='flex justify-between w-full bg-transparent sticky top-0 z-50'
+      id='navbar'>
       {/* Desktop nav */}
       <div className='sm:flex w-full justify-between items-center hidden c-container'>
         <span className='text-2xl text-yellow font-bold'>MyTeam.</span>
