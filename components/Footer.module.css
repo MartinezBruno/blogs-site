@@ -1,0 +1,7 @@
+.column_header {
+  @apply text-white text-base md:text-xl lg:text-2xl font-bold;
+}
+
+.column_link {
+  @apply text-white font-normal text-sm md:text-base lg:text-lg;
+}

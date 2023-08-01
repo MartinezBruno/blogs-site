@@ -10,7 +10,7 @@ const HamburgerIcon = ({ toggleMenu }) => {
       viewBox='0 0 16 12'
       onClick={toggleMenu}>
       <path
-        stroke='currentColor'
+        stroke='white'
         strokeLinecap='round'
         strokeLinejoin='round'
         strokeWidth='2'

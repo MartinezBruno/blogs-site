@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'mulish': ['Mulish', 'sans-serif']
+        'mulish': ['Mulish', 'sans-serif'],
+        'pt_serif': ['PT Serif', 'serif'],
       },
       colors: {
         black: '#25313C',
