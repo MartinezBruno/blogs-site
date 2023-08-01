@@ -43,7 +43,9 @@ const Nav = () => {
       id='navbar'>
       {/* Desktop nav */}
       <div className='sm:flex w-full justify-between items-center hidden c-container'>
-        <span className='text-2xl text-yellow font-bold'>MyTeam.</span>
+        <Link href='/'>
+          <span className='text-2xl text-yellow font-bold font-pt_serif'>InstaBlogs</span>
+        </Link>
         <div className='flex justify-end items-center w w-full gap-10 relative'>
           <Link
             href='#about-us'
@@ -115,8 +117,12 @@ const Nav = () => {
 
       {/* Mobile Nav */}
       <div className='sm:hidden w-full flex justify-between relative p-3'>
-        <Hamburger toggleMenu={handleToggleMobileMenu} />
-        <span className='text-2xl text-yellow font-bold'>MyTeam.</span>
+        <div className='basis-[108px] my-auto'>
+          <Hamburger toggleMenu={handleToggleMobileMenu} />
+        </div>
+        <Link href='/'>
+          <span className='text-2xl text-yellow font-bold font-pt_serif'>InstaBlogs</span>
+        </Link>
         {session?.user ? (
           <div className='flex max-h-[37px]'>
             <Image

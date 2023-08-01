@@ -1,11 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=PT+Serif:wght@400;700&display=swap');
 
 * {
   font-family: 'Mulish', sans-serif;
   scroll-behavior: smooth;
+  word-wrap: break-word;
 }
 
 .heading1 {
