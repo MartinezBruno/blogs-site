@@ -1,3 +1,13 @@
+.column_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  /* Fill available space */
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: fill-available;
+}
+
 .column_header {
   @apply text-white text-base md:text-xl lg:text-2xl font-bold;
 }
