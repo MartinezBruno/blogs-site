@@ -1,8 +1,8 @@
 import data from '@/content/about-us.json'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const featuredArticles = data.data
-console.log(featuredArticles)
 
 const AboutUs = () => {
   return (
@@ -10,7 +10,9 @@ const AboutUs = () => {
       {featuredArticles.map((article, index) => (
         <article
           key={index}
-          className={index % 2 ? 'md:flex flex-row-reverse' : 'md:flex'}>
+          className={`${
+            index % 2 ? 'flex md:flex-row-reverse self-end' : 'flex md:flex-row'
+          } flex-col max-w-[442px] md:max-w-none`}>
           <Image
             src={article.image}
             width={242}
@@ -22,6 +24,7 @@ const AboutUs = () => {
           <div className='basis-full'>
             <h2>{article.title}</h2>
             <p>{article.content.substring(0, 500)}...</p>
+            <Link href={article.handle}>Learn more</Link>
           </div>
         </article>
       ))}

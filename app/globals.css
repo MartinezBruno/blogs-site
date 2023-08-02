@@ -44,5 +44,5 @@
 }
 
 .c-container {
-  @apply max-w-[1275px] mx-auto p-3;
+  @apply max-w-[1275px] mx-auto p-8;
 }

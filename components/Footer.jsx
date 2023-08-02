@@ -33,7 +33,7 @@ const contactUsData = [
 
 const Footer = () => {
   return (
-    <footer className='bg-yellow p-5'>
+    <footer className='bg-yellow'>
       <div className='c-container flex flex-col lg:flex-row gap-6'>
         <Link
           href='/'
