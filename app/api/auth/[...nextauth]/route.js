@@ -25,7 +25,8 @@ const handler = NextAuth({
             data: {
               email: profile.email,
               username: profile.name.replace(' ', '').toLowerCase(),
-              image: profile.image
+              fullname: profile.name,
+              image: profile.picture
             }
           })
         }
