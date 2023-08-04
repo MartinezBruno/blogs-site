@@ -1,4 +1,3 @@
-import hero_img from '@/assets/Banner.png'
 import Image from 'next/image'
 
 const Hero = () => {
@@ -6,8 +5,9 @@ const Hero = () => {
     <section className='relative min-h-[687px] pt-16'>
       <div className='bg-[rgba(11,8,2,0.33)] absolute inset-0'>
         <Image
-          src={hero_img}
+          src='https://firebasestorage.googleapis.com/v0/b/instablogs-2ea40.appspot.com/o/Banner.png?alt=media&token=cc4c4d6c-ad76-45dd-b9e6-4071ba847602'
           alt='Hero image'
+          loading='eager'
           width={1920}
           height={1080}
           className='object-cover object-[top_0_right_-400px] md:object-[top_center] w-full h-full relative -z-20'

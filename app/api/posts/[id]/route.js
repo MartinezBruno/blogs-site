@@ -13,7 +13,7 @@ export const GET = async (request, { params }) => {
 
     return NextResponse.json(post)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return NextResponse.json({ error }, { status: 404 })
   }
 }
@@ -43,7 +43,7 @@ export const POST = async (request, { params }) => {
 
     return NextResponse.json(comment)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return NextResponse.json({ error }, { status: 404 })
   }
 }

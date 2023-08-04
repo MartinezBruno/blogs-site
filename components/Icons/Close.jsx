@@ -6,6 +6,8 @@ const Close = ({ handleClose }) => {
       xmlns='http://www.w3.org/2000/svg'
       fill='none'
       viewBox='0 0 14 14'
+      height='auto'
+      width='auto'
       onClick={handleClose}>
       <path
         stroke='currentColor'

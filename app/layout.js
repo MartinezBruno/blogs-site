@@ -15,11 +15,9 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={`${inter.className} h-screen`}>
         <Provider>
-          <main>
-            <Nav />
-            {children}
-            <Footer />
-          </main>
+          <Nav />
+          {children}
+          <Footer />
         </Provider>
       </body>
     </html>
