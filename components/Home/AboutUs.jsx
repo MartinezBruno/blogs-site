@@ -1,6 +1,6 @@
 import data from '@/content/about-us.json'
+import Arrow from '@/components/Icons/Arrow'
 import Link from 'next/link'
-import Arrow from './Icons/Arrow'
 
 const featuredArticles = data.data
 

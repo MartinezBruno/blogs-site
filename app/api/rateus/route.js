@@ -6,11 +6,22 @@ export const POST = async request => {
     // get the user id from params and update there biography or other details depending on the request body
     const body = await request.json()
     const { content, authorId, rating } = body
+
+    const user = await prisma.user.findUnique({
+      where: {
+        id: authorId
+      }
+    })
+    if (!user) return NextResponse.error(new Error('User not found'))
+
     const review = await prisma.review.create({
       data: {
         content,
         rating,
-        authorId
+        authorId,
+        authorName: user.fullname,
+        authorPic: user.image,
+        authorPos: user.position
       }
     })
     if (!review) return NextResponse.error(new Error('Review not created'))

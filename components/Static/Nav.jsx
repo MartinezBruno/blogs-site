@@ -4,7 +4,7 @@ import { getProviders, signIn, signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import Hamburger from './Icons/Hamburger'
+import Hamburger from '../Icons/Hamburger'
 import MobileNav from './MobileNav'
 
 const scrollFunction = () => {
