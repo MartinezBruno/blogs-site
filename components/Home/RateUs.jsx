@@ -1,12 +1,15 @@
 import RateUsSlides from './RateUsSlides'
 
 const getReviews = async () => {
-  const res = await fetch(`${process.env.BASE_URL}/api/rateus`, {
-    // next: { revalidate: 3600 }
-    cache: 'no-store'
-  })
-  const data = await res.json()
-  return data
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/api/rateus`, {
+      next: { revalidate: 3600 }
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    console.error('Error on fetch',error)
+  }
 }
 
 const RateUs = async () => {
