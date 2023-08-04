@@ -18,7 +18,7 @@ export const PATCH = async (request, { params }) => {
 
     return NextResponse.json(user)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return NextResponse.json({ error }, { status: 404 })
   }
 }

@@ -12,7 +12,7 @@ export const GET = async (request, { params }) => {
     if (!comments) return NextResponse.error(new Error('Comments not found'))
     return NextResponse.json(comments)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return NextResponse.json({ error }, { status: 404 })
   }
 }

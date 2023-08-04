@@ -41,7 +41,6 @@ const handler = NextAuth({
             email: session.user.email
           }
         })
-        console.log(user)
         session.user.id = user.id
         return session
       } catch (error) {
