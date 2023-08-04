@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Close from './Icons/Close'
+import Close from '@/components/Icons/Close'
 
 const MobileNav = ({ isActive, handleClose }) => {
   return (

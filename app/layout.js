@@ -1,5 +1,5 @@
-import Footer from '@/components/Footer'
-import Nav from '@/components/Nav'
+import Footer from '@/components/Static/Footer'
+import Nav from '@/components/Static/Nav'
 import Provider from '@/components/Provider'
 import { Inter } from 'next/font/google'
 import './globals.css'
