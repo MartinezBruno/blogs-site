@@ -3,6 +3,7 @@
 import { getProviders, signIn, signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Hamburger from '../Icons/Hamburger'
 import MobileNav from './MobileNav'
@@ -17,6 +18,7 @@ const scrollFunction = () => {
 
 const Nav = () => {
   const { data: session } = useSession()
+  const currentRoute = usePathname()
 
   const [providers, setProviders] = useState(null)
   const [toggleDropdown, setToggleDropdown] = useState(false)
@@ -93,7 +95,9 @@ const Nav = () => {
           </Link>
           <Link
             href='/blogs'
-            className='font-semibold'
+            className={`font-semibold ${
+              currentRoute === '/blogs' && 'underline underline-offset-[12px]'
+            }`}
             style={{ color: svgFillColor }}>
             Blog
           </Link>
@@ -154,7 +158,10 @@ const Nav = () => {
       {/* Mobile Nav */}
       <div className='sm:hidden w-full flex justify-between relative p-3'>
         <div className='basis-[108px] my-auto'>
-          <Hamburger toggleMenu={handleToggleMobileMenu} svgFillColor={svgFillColor} />
+          <Hamburger
+            toggleMenu={handleToggleMobileMenu}
+            svgFillColor={svgFillColor}
+          />
         </div>
         <Link href='/'>
           <svg

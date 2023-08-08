@@ -5,13 +5,14 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 import Image from 'next/image'
 
+import 'swiper/css'
 import ArrowLeft from '../Icons/ArrowLeft'
 import ArrowRight from '../Icons/ArrowRight'
 import Stars from '../Icons/Stars'
-import 'swiper/css'
 import './Slides.css'
 
 const RateUsSlides = ({ reviews }) => {
+  console.log(reviews)
   return (
     <Swiper
       style={{ paddingBottom: '110px' }}
@@ -38,7 +39,7 @@ const RateUsSlides = ({ reviews }) => {
         delay: 5000,
         disableOnInteraction: false
       }}>
-      {reviews.map((review, index) => (
+      {reviews?.map((review, index) => (
         <SwiperSlide
           key={index}
           className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] border'>
