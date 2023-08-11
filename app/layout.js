@@ -7,7 +7,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'InstaBlogs'
+  title: 'InstaBlogs',
+  description:
+    'InstaBlogs is a platform for sharing your thoughts and ideas with the world. It is a place where you can share your knowledge and experience with others.'
 }
 
 export default function RootLayout({ children }) {

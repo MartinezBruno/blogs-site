@@ -3,7 +3,22 @@ import { NextResponse } from 'next/server'
 
 export const GET = async () => {
   const posts = await prisma.post.findMany()
-  return NextResponse.json(posts)
+  const postsWithAuthorData = await Promise.all(
+    posts.map(async post => {
+      const AuthorData = await prisma.user.findUnique({
+        where: {
+          id: post.authorId
+        }
+      })
+      return {
+        ...post,
+        authorName: AuthorData.fullname || 'Unknown author',
+        authorPic: AuthorData.image || 'https://i.pravatar.cc/150?img=68'
+      }
+    })
+  )
+  console.log(postsWithAuthorData)
+  return NextResponse.json(postsWithAuthorData)
 }
 
 export const POST = async request => {

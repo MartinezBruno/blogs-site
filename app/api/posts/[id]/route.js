@@ -35,8 +35,9 @@ export const POST = async (request, { params }) => {
     const comment = await prisma.comment.create({
       data: {
         content: content,
-        authorId: user.id,
-        postId: id
+        postId: id,
+        authorPic: user.image,
+        authorName: user.fullname,
       }
     })
     if (!comment) return NextResponse.error(new Error('Comment not created'))

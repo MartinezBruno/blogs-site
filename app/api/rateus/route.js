@@ -18,10 +18,7 @@ export const POST = async request => {
       data: {
         content,
         rating,
-        authorId,
-        authorName: user.fullname,
-        authorPic: user.image,
-        authorPos: user.position
+        authorId
       }
     })
     if (!review) return NextResponse.error(new Error('Review not created'))
@@ -36,9 +33,24 @@ export const POST = async request => {
 export const GET = async () => {
   try {
     const reviews = await prisma.review.findMany()
+    const reviewsWithAuthorData = await Promise.all(
+      reviews.map(async review => {
+        const AuthorData = await prisma.user.findUnique({
+          where: {
+            id: review.authorId
+          }
+        })
+        return {
+          ...review,
+          authorName: AuthorData.fullname || 'Unknown author',
+          authorPic: AuthorData.image || 'https://i.pravatar.cc/150?img=68',
+          authorPos: AuthorData.position || 'Unknown position'
+        }
+      })
+    )
     if (!reviews) return NextResponse.error(new Error('Reviews not found'))
 
-    return NextResponse.json(reviews)
+    return NextResponse.json(reviewsWithAuthorData)
   } catch (error) {
     console.error(error)
     return NextResponse.json({ error }, { status: 404 })
