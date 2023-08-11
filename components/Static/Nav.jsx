@@ -11,8 +11,14 @@ import MobileNav from './MobileNav'
 const scrollFunction = () => {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     document.getElementById('navbar').style.backdropFilter = 'blur(8px)'
+    const url = new URL(window.location.href)
+    if (url.pathname === '/')
+      document.getElementById('navbar').style.backgroundColor = 'rgba(0,0,0,0.15)'
+    else
+      document.getElementById('navbar').style.backgroundColor = 'rgba(255,255,255,0.45)'
   } else {
     document.getElementById('navbar').style.backdropFilter = 'blur(0px)'
+    document.getElementById('navbar').style.backgroundColor = 'transparent'
   }
 }
 
@@ -41,6 +47,20 @@ const Nav = () => {
     const url = new URL(window.location.href)
     const color = url.pathname === '/' ? '#fff' : '#000'
     setSvgFillColor(color)
+  }, [])
+
+  useEffect(() => {
+    const handleUrlChange = () => {
+      const url = new URL(window.location.href)
+      const color = url.pathname === '/' ? '#fff' : '#000'
+      setSvgFillColor(color)
+    }
+
+    window.addEventListener('popstate', handleUrlChange)
+
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange)
+    }
   }, [])
 
   return (
@@ -112,7 +132,8 @@ const Nav = () => {
                 onClick={() => setToggleDropdown(prev => !prev)}
               />
               {toggleDropdown && (
-                <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
+                <div
+                  className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
                   <Link
                     href='/profile'
                     className='dropdown_link'

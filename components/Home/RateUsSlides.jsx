@@ -2,10 +2,10 @@
 
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
 
 import Image from 'next/image'
 
-import 'swiper/css'
 import ArrowLeft from '../Icons/ArrowLeft'
 import ArrowRight from '../Icons/ArrowRight'
 import Stars from '../Icons/Stars'
@@ -50,8 +50,8 @@ const RateUsSlides = ({ reviews }) => {
               <Image
                 src={review.authorPic}
                 alt='Review author image'
-                width={56}
-                height={56}
+                width={60}
+                height={60}
                 className='rounded-full'
               />
               <div>

@@ -22,7 +22,7 @@ const MobileNav = ({ isActive, handleClose }) => {
           Support
         </Link>
         <Link
-          href={'/blog'}
+          href={'/blogs'}
           className='nav-link'>
           Blog
         </Link>
