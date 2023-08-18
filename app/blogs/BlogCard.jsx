@@ -1,10 +1,10 @@
-import Image from "next/image"
+import Image from 'next/image'
 
 const BlogCard = ({ blog }) => {
   return (
     <div
       key={blog.id}
-      className='rounded-lg border shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'>
+      className='rounded-lg border border-white shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'>
       <Image
         src={blog.banner}
         width={200}
@@ -15,7 +15,7 @@ const BlogCard = ({ blog }) => {
       <div className='p-5'>
         <h2>{blog.title}</h2>
         <p>{blog.content}</p>
-        <span>
+        <div className='flex justify-start items-center gap-2 mt-11'>
           <Image
             src={blog.authorPic}
             width={40}
@@ -23,8 +23,10 @@ const BlogCard = ({ blog }) => {
             alt='user photo'
             className='rounded-full'
           />
-          {blog.authorName} | {new Date(blog.createdAt).toDateString()}
-        </span>
+          <span className='text-text_gray text-sm font-semibold'>
+            {blog.authorName} | {new Date(blog.createdAt).toDateString()}
+          </span>
+        </div>
       </div>
     </div>
   )

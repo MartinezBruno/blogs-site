@@ -7,6 +7,7 @@ const Hero = () => {
         <Image
           src='https://firebasestorage.googleapis.com/v0/b/instablogs-2ea40.appspot.com/o/Banner.png?alt=media&token=cc4c4d6c-ad76-45dd-b9e6-4071ba847602'
           alt='Hero image'
+          priority
           loading='eager'
           width={1920}
           height={1080}
