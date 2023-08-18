@@ -12,7 +12,6 @@ import Stars from '../Icons/Stars'
 import './Slides.css'
 
 const RateUsSlides = ({ reviews }) => {
-  console.log(reviews)
   return (
     <Swiper
       style={{ paddingBottom: '110px' }}

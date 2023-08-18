@@ -17,7 +17,6 @@ export const GET = async () => {
       }
     })
   )
-  console.log(postsWithAuthorData)
   return NextResponse.json(postsWithAuthorData)
 }
 
@@ -45,7 +44,7 @@ export const POST = async request => {
 
     return NextResponse.json(post)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return NextResponse.json({ error }, { status: 404 })
   }
 }

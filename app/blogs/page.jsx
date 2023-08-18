@@ -10,7 +10,6 @@ const getBlogs = async () => {
 
 const BlogsPage = async () => {
   const blogs = await getBlogs()
-  console.log(blogs)
   return (
     <section className='c-container mt-28'>
       <h1>Blogs</h1>
