@@ -40,7 +40,7 @@
 
 .nav-link {
   /* Mobile nav button */
-  @apply text-base font-bold tracking-[175%] underline;
+  @apply text-base font-bold tracking-[175%] uppercase border-b p-3;
 }
 
 .c-container {

@@ -21,6 +21,8 @@ const Nav = () => {
 
   const handleToggleMobileMenu = () => {
     setToggleMobileMenu(prev => !prev)
+    if (toggleMobileMenu) document.body.style.overflow = 'unset'
+    else document.body.style.overflow = 'hidden'
   }
 
   useEffect(() => {
@@ -29,6 +31,7 @@ const Nav = () => {
       setProviders(providers)
     }
     setProvidersData()
+
     const color = pathname === '/' ? '#fff' : '#000'
     setSvgFillColor(color)
   }, [pathname])
