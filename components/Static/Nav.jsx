@@ -8,20 +8,6 @@ import { useEffect, useState } from 'react'
 import Hamburger from '../Icons/Hamburger'
 import MobileNav from './MobileNav'
 
-const scrollFunction = () => {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById('navbar').style.backdropFilter = 'blur(8px)'
-    const url = new URL(window.location.href)
-    if (url.pathname === '/')
-      document.getElementById('navbar').style.backgroundColor = 'rgba(0,0,0,0.15)'
-    else
-      document.getElementById('navbar').style.backgroundColor = 'rgba(255,255,255,0.45)'
-  } else {
-    document.getElementById('navbar').style.backdropFilter = 'blur(0px)'
-    document.getElementById('navbar').style.backgroundColor = 'transparent'
-  }
-}
-
 const Nav = () => {
   const { data: session } = useSession()
   const currentRoute = usePathname()
@@ -29,7 +15,9 @@ const Nav = () => {
   const [providers, setProviders] = useState(null)
   const [toggleDropdown, setToggleDropdown] = useState(false)
   const [toggleMobileMenu, setToggleMobileMenu] = useState(false)
+
   const [svgFillColor, setSvgFillColor] = useState('')
+  const pathname = usePathname()
 
   const handleToggleMobileMenu = () => {
     setToggleMobileMenu(prev => !prev)
@@ -41,31 +29,15 @@ const Nav = () => {
       setProviders(providers)
     }
     setProvidersData()
-    window.onscroll = function () {
-      scrollFunction()
-    }
-    const url = new URL(window.location.href)
-    const color = url.pathname === '/' ? '#fff' : '#000'
+    const color = pathname === '/' ? '#fff' : '#000'
     setSvgFillColor(color)
-  }, [])
-
-  useEffect(() => {
-    const handleUrlChange = () => {
-      const url = new URL(window.location.href)
-      const color = url.pathname === '/' ? '#fff' : '#000'
-      setSvgFillColor(color)
-    }
-
-    window.addEventListener('popstate', handleUrlChange)
-
-    return () => {
-      window.removeEventListener('popstate', handleUrlChange)
-    }
-  }, [])
+  }, [pathname])
 
   return (
     <nav
-      className='flex justify-between w-full transition-all fixed top-0 z-50'
+      className={`flex justify-between w-full transition-all fixed top-0 z-50 ${
+        pathname === '/' && 'homepage'
+      }`}
       id='navbar'>
       {/* Desktop nav */}
       <div className='sm:flex w-full justify-between items-center hidden c-container !py-6'>
@@ -132,8 +104,7 @@ const Nav = () => {
                 onClick={() => setToggleDropdown(prev => !prev)}
               />
               {toggleDropdown && (
-                <div
-                  className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
+                <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
                   <Link
                     href='/profile'
                     className='dropdown_link'
