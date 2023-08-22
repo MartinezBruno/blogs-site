@@ -12,7 +12,7 @@ const BlogsSwiper = ({ blogs }) => {
       className='!py-4 !px-1 rounded-lg'
       modules={[Navigation]}
       spaceBetween={45}
-      slidesPerView={1}
+      slidesPerView={1.1}
       breakpoints={{
         768: {
           slidesPerView: slidesPerView

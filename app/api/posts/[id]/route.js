@@ -11,7 +11,21 @@ export const GET = async (request, { params }) => {
     })
     if (!post) return NextResponse.error(new Error('Post not found'))
 
-    return NextResponse.json(post)
+    const author = await prisma.user.findUnique({
+      where: {
+        id: post.authorId
+      }
+    })
+    if (!author) return NextResponse.error(new Error('Author not found'))
+
+    const response = {
+      ...post,
+      authorName: author.fullname,
+      authorPos: author.position,
+      authorPic: author.image
+    }
+
+    return NextResponse.json(response)
   } catch (error) {
     console.error(error)
     return NextResponse.json({ error }, { status: 404 })
@@ -37,7 +51,7 @@ export const POST = async (request, { params }) => {
         content: content,
         postId: id,
         authorPic: user.image,
-        authorName: user.fullname,
+        authorName: user.fullname
       }
     })
     if (!comment) return NextResponse.error(new Error('Comment not created'))
