@@ -1,24 +1,28 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import styles from './BlogCard.module.css'
+
 const BlogCard = ({ blog }) => {
   return (
-    <div
-      key={blog.id}
-      className='rounded-lg border border-white shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'>
-      <Link href={`/blogs/${blog.id}`}>
+    <Link href={`/blogs/${blog.id}`}>
+      <div
+        key={blog.id}
+        className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] min-h-[540px] swiper-card'>
         {blog.image !== null && (
-          <Image
-            src={blog.banner}
-            width={200}
-            height={200}
-            alt={blog.title}
-            className='object-cover w-full rounded-lg'
-          />
+          <div className='overflow-hidden rounded-lg'>
+            <Image
+              src={blog.banner}
+              width={200}
+              height={200}
+              alt={blog.title}
+              className='object-cover w-full blog-img'
+            />
+          </div>
         )}
         <div className='p-5'>
-          <h2>{blog.title}</h2>
-          <p>{blog.content}</p>
+          <h2 className='text-xl lg:text-2xl h-[2.6em] truncate mb-2'>{blog.title}</h2>
+          <p className={styles.blog_content}>{blog.content}</p>
           <div className='flex justify-start items-center gap-2 mt-11'>
             <Image
               src={blog.authorPic}
@@ -32,8 +36,8 @@ const BlogCard = ({ blog }) => {
             </span>
           </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   )
 }
 

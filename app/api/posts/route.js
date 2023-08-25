@@ -2,7 +2,11 @@ import prisma from '@/app/lib/prismadb'
 import { NextResponse } from 'next/server'
 
 export const GET = async () => {
-  const posts = await prisma.post.findMany()
+  const posts = await prisma.post.findMany({
+    orderBy: {
+      createdAt: 'desc'
+    }
+  })
   const postsWithAuthorData = await Promise.all(
     posts.map(async post => {
       const AuthorData = await prisma.user.findUnique({
@@ -27,15 +31,15 @@ export const POST = async request => {
 
     const user = await prisma.user.findUnique({
       where: {
-        email: email
+        email
       }
     })
     if (!user) return NextResponse.error(new Error('User not found'))
 
     const post = await prisma.post.create({
       data: {
-        title: title,
-        content: content,
+        title,
+        content,
         authorId: user.id,
         banner: image
       }
