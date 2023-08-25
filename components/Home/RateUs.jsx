@@ -3,8 +3,8 @@ import RateUsSlides from './RateUsSlides'
 const getReviews = async () => {
   try {
     const res = await fetch(`${process.env.BASE_URL}/api/rateus`, {
-      // next: { revalidate: 3600 }
-      cache: 'no-cache'
+      next: { revalidate: 3600 }
+      // cache: 'no-cache'
     })
     const data = await res.json()
     return data

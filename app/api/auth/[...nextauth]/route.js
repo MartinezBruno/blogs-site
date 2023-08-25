@@ -13,7 +13,7 @@ const handler = NextAuth({
     })
   ],
   callbacks: {
-    async signIn({ profile }) {
+    async signIn ({ profile }) {
       try {
         const userExists = await prisma.user.findUnique({
           where: {
@@ -35,14 +35,19 @@ const handler = NextAuth({
         console.error(error)
       }
     },
-    async session({ session }) {
+    async session ({ session }) {
       try {
         const user = await prisma.user.findUnique({
           where: {
             email: session.user.email
           }
         })
+
         session.user.id = user.id
+        session.user.fullname = user.fullname
+        session.user.pos = user.position ?? ''
+        session.user.bio = user.bio ?? ''
+
         return session
       } catch (error) {
         console.error(error)

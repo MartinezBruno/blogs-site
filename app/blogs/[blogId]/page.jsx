@@ -2,7 +2,8 @@ import Image from 'next/image'
 
 const getBlogDetail = async blogId => {
   const res = await fetch(`${process.env.BASE_URL}/api/posts/${blogId}`, {
-    cache: 'no-cache'
+    next: { revalidate: 3600 }
+    // cache: 'no-cache'
   })
   const data = await res.json()
   return data
@@ -11,7 +12,6 @@ const getBlogDetail = async blogId => {
 const BlogDetail = async ({ params }) => {
   const { blogId } = params
   const blogDetail = await getBlogDetail(blogId)
-  console.log(blogDetail)
   return (
     <section className='c-container mt-28 flex flex-col items-center'>
       <h1>{blogDetail.title}</h1>
