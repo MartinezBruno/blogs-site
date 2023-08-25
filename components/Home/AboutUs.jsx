@@ -1,5 +1,5 @@
-import data from '@/content/about-us.json'
 import Arrow from '@/components/Icons/Arrow'
+import data from '@/content/about-us.json'
 import Link from 'next/link'
 
 const featuredArticles = data.data
@@ -12,10 +12,8 @@ const AboutUs = () => {
       {featuredArticles.map((article, index) => (
         <article
           key={index}
-          className={`${
-            index % 2 ? 'flex lg:flex-row-reverse self-end' : 'flex lg:flex-row'
-          } flex-col max-w-[442px] md:max-w-[650px] lg:max-w-none lg:gap-28`}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+          className={`${index % 2 ? 'flex lg:flex-row-reverse self-end' : 'flex lg:flex-row'
+            } flex-col max-w-[442px] md:max-w-[650px] lg:max-w-none lg:gap-28`}>
           <img
             src={article.image}
             alt='Article cover image'
@@ -31,9 +29,8 @@ const AboutUs = () => {
             </p>
             <Link
               href={article.handle}
-              className={`${
-                index % 2 && 'justify-end'
-              } flex text-sm font-bold leading-[175%] underline mt-5`}>
+              className={`${index % 2 && 'justify-end'
+                } flex text-sm font-bold leading-[175%] underline mt-5`}>
               Learn more <Arrow />
             </Link>
           </div>

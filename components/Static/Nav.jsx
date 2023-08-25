@@ -38,9 +38,8 @@ const Nav = () => {
 
   return (
     <nav
-      className={`flex justify-between w-full transition-all fixed top-0 z-50 ${
-        pathname === '/' && 'homepage'
-      }`}
+      className={`flex justify-between w-full transition-all fixed top-0 z-50 ${pathname === '/' && 'homepage'
+        }`}
       id='navbar'>
       {/* Desktop nav */}
       <div className='sm:flex w-full justify-between items-center hidden c-container !py-6'>
@@ -90,63 +89,64 @@ const Nav = () => {
           </Link>
           <Link
             href='/blogs'
-            className={`font-semibold ${
-              currentRoute === '/blogs' && 'underline underline-offset-[12px]'
-            }`}
+            className={`font-semibold ${currentRoute === '/blogs' && 'underline underline-offset-[12px]'
+              }`}
             style={{ color: svgFillColor }}>
             Blog
           </Link>
-          {session?.user ? (
-            <div className=''>
-              <Image
-                src={session?.user.image}
-                width={37}
-                height={37}
-                className='rounded-full'
-                alt='profile icon'
-                onClick={() => setToggleDropdown(prev => !prev)}
-              />
-              {toggleDropdown && (
-                <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
-                  <Link
-                    href='/profile'
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}>
-                    My profile
-                  </Link>
-                  <Link
-                    href='/create-blog'
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}>
-                    Create Blog
-                  </Link>
-                  <button
-                    type='button'
-                    onClick={() => {
-                      setToggleDropdown(false)
-                      signOut()
-                    }}
-                    className='mt-5 text-start'>
-                    Sign Out
-                  </button>
-                </div>
+          {session?.user
+            ? (
+              <div className=''>
+                <Image
+                  src={session?.user.image}
+                  width={37}
+                  height={37}
+                  className='rounded-full'
+                  alt='profile icon'
+                  onClick={() => setToggleDropdown(prev => !prev)}
+                />
+                {toggleDropdown && (
+                  <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
+                    <Link
+                      href='/profile'
+                      className='dropdown_link'
+                      onClick={() => setToggleDropdown(false)}>
+                      My profile
+                    </Link>
+                    <Link
+                      href='/create-blog'
+                      className='dropdown_link'
+                      onClick={() => setToggleDropdown(false)}>
+                      Create Blog
+                    </Link>
+                    <button
+                      type='button'
+                      onClick={() => {
+                        setToggleDropdown(false)
+                        signOut()
+                      }}
+                      className='mt-5 text-start'>
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
+              )
+            : (
+              <>
+                {providers &&
+                  Object.values(providers).map(provider => (
+                    <button
+                      type='button'
+                      key={provider.name}
+                      onClick={() => signIn(provider.id)}
+                      className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
+                      style={{ color: svgFillColor }}>
+                      Get access
+                    </button>
+                  ))}
+              </>
               )}
-            </div>
-          ) : (
-            <>
-              {providers &&
-                Object.values(providers).map(provider => (
-                  <button
-                    type='button'
-                    key={provider.name}
-                    onClick={() => signIn(provider.id)}
-                    className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
-                    style={{ color: svgFillColor }}>
-                    Get access
-                  </button>
-                ))}
-            </>
-          )}
         </div>
       </div>
 
@@ -190,57 +190,59 @@ const Nav = () => {
             />
           </svg>
         </Link>
-        {session?.user ? (
-          <div className='flex max-h-[37px]'>
-            <Image
-              src={session?.user.image}
-              width={37}
-              height={37}
-              className='rounded-full'
-              alt='profile icon'
-              onClick={() => setToggleDropdown(prev => !prev)}
-            />
-            {toggleDropdown && (
-              <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
-                <Link
-                  href='/profile'
-                  className='dropdown_link'
-                  onClick={() => setToggleDropdown(false)}>
-                  My profile
-                </Link>
-                <Link
-                  href='/create-blog'
-                  className='dropdown_link'
-                  onClick={() => setToggleDropdown(false)}>
-                  Create Blog
-                </Link>
-                <button
-                  type='button'
-                  onClick={() => {
-                    setToggleDropdown(false)
-                    signOut()
-                  }}
-                  className='mt-5 text-start'>
-                  Sign Out
-                </button>
-              </div>
+        {session?.user
+          ? (
+            <div className='flex max-h-[37px]'>
+              <Image
+                src={session?.user.image}
+                width={37}
+                height={37}
+                className='rounded-full'
+                alt='profile icon'
+                onClick={() => setToggleDropdown(prev => !prev)}
+              />
+              {toggleDropdown && (
+                <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
+                  <Link
+                    href='/profile'
+                    className='dropdown_link'
+                    onClick={() => setToggleDropdown(false)}>
+                    My profile
+                  </Link>
+                  <Link
+                    href='/create-blog'
+                    className='dropdown_link'
+                    onClick={() => setToggleDropdown(false)}>
+                    Create Blog
+                  </Link>
+                  <button
+                    type='button'
+                    onClick={() => {
+                      setToggleDropdown(false)
+                      signOut()
+                    }}
+                    className='mt-5 text-start'>
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
+            )
+          : (
+            <>
+              {providers &&
+                Object.values(providers).map(provider => (
+                  <button
+                    type='button'
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                    style={{ color: svgFillColor }}
+                    className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'>
+                    Get access
+                  </button>
+                ))}
+            </>
             )}
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map(provider => (
-                <button
-                  type='button'
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  style={{ color: svgFillColor }}
-                  className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'>
-                  Get access
-                </button>
-              ))}
-          </>
-        )}
         <MobileNav
           isActive={toggleMobileMenu}
           handleClose={handleToggleMobileMenu}

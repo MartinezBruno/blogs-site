@@ -6,7 +6,7 @@ export const GET = async (request, { params }) => {
     const { postId } = params
     const comments = await prisma.comment.findMany({
       where: {
-        postId: postId
+        postId
       }
     })
     if (!comments) return NextResponse.error(new Error('Comments not found'))

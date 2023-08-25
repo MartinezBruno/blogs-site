@@ -41,14 +41,14 @@ export const POST = async (request, { params }) => {
 
     const user = await prisma.user.findUnique({
       where: {
-        email: email
+        email
       }
     })
     if (!user) return NextResponse.error(new Error('User not found'))
 
     const comment = await prisma.comment.create({
       data: {
-        content: content,
+        content,
         postId: id,
         authorPic: user.image,
         authorName: user.fullname
