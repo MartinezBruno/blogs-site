@@ -29,10 +29,10 @@ const BlogDetail = async ({ params }) => {
       </div>
       <Image
         src={blogDetail.banner}
-        width={200}
-        height={200}
+        width={1920}
+        height={768}
         alt={blogDetail.title}
-        className='object-cover w-full'
+        className='object-cover w-full max-w-[1000px] max-h-[470px]'
       />
       <p className='px-14 md:px-28'>{blogDetail.content}</p>
       <div className='flex'>

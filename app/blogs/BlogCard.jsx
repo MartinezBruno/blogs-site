@@ -13,8 +13,8 @@ const BlogCard = ({ blog }) => {
           <div className='overflow-hidden rounded-lg'>
             <Image
               src={blog.banner}
-              width={200}
-              height={200}
+              width={640}
+              height={480}
               alt={blog.title}
               className='object-cover w-full blog-img'
             />
