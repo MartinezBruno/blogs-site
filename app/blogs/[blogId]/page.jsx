@@ -34,7 +34,8 @@ const BlogDetail = async ({ params }) => {
         alt={blogDetail.title}
         className='object-cover w-full max-w-[1000px] max-h-[470px]'
       />
-      <p className='px-14 md:px-28'>{blogDetail.content}</p>
+      <p className='px-14 md:px-28' dangerouslySetInnerHTML={{ __html: JSON.stringify(blogDetail.content).replace(/^"(.*)"$/, '$1').replace(/\\n/g, '<br/>') }}>
+      </p>
       <div className='flex'>
         <Image
           src={blogDetail.authorPic}

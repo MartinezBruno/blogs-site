@@ -28,7 +28,7 @@ model Post {
   updatedAt DateTime  @updatedAt
   title     String
   banner    String?
-  content   String?
+  content   String
   authorId  String
   comments  Comment[]
 }
