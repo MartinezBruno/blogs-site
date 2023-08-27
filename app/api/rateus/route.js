@@ -1,4 +1,4 @@
-import prisma from '@/app/lib/prismadb'
+import prisma from '@/lib/prismadb'
 import { NextResponse } from 'next/server'
 
 export const POST = async request => {
@@ -49,7 +49,7 @@ export const GET = async () => {
       })
     )
     if (!reviews) return NextResponse.error(new Error('Reviews not found'))
-
+    console.log(reviewsWithAuthorData)
     return NextResponse.json(reviewsWithAuthorData)
   } catch (error) {
     console.error(error)
