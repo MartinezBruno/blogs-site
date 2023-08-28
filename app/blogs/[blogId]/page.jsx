@@ -14,7 +14,7 @@ const BlogDetail = async ({ params }) => {
   const blogDetail = await getBlogDetail(blogId)
   return (
     <section className='c-container mt-28 flex flex-col items-center'>
-      <h1>{blogDetail.title}</h1>
+      <h1 className='font-extrabold text-2xl md:text-5xl '>{blogDetail.title}</h1>
       <div className='flex justify-start items-center gap-2 my-3'>
         <Image
           src={blogDetail.authorPic}
@@ -32,21 +32,24 @@ const BlogDetail = async ({ params }) => {
         width={1920}
         height={768}
         alt={blogDetail.title}
-        className='object-cover w-full max-w-[1000px] max-h-[470px]'
+        className='object-cover w-full max-w-[1000px] max-h-[470px] mb-9'
       />
-      <p className='px-14 md:px-28' dangerouslySetInnerHTML={{ __html: JSON.stringify(blogDetail.content).replace(/^"(.*)"$/, '$1').replace(/\\n/g, '<br/>') }}>
-      </p>
-      <div className='flex'>
+      <div className='w-full lg:w-3/4 transition-all duration-300 sm:px-14 md:px-28'>
+        <p className='text-text_gray md:text-lg lg:text-xl leading-[130%]' dangerouslySetInnerHTML={{ __html: JSON.stringify(blogDetail.content).replace(/^"(.*)"$/, '$1').replace(/\\n/g, '<br/>') }}>
+        </p>
+        <hr className='my-5 mx-7' />
+      </div>
+      <div className='flex gap-4'>
         <Image
           src={blogDetail.authorPic}
           width={40}
           height={40}
           alt='user photo'
-          className='rounded-full'
+          className='rounded-full max-w-[40px] max-h-[40px]'
         />
         <div className='flex flex-col'>
-          <span>Written By</span>
-          <span className='text-text_gray text-sm font-semibold'>
+          <span className='text-[#BBC8C4] font-bold tracking-[1.6px] uppercase text-base'>Written By</span>
+          <span className='text-[#25313C] text-sm md:text-2xl font-normal'>
             {blogDetail.authorName}
           </span>
           <span>{blogDetail.authorPos}</span>
