@@ -9,15 +9,18 @@ export const GET = async () => {
   })
   const postsWithAuthorData = await Promise.all(
     posts.map(async post => {
-      const AuthorData = await prisma.user.findUnique({
+      const author = await prisma.user.findUnique({
         where: {
           id: post.authorId
+        },
+        select: {
+          fullname: true,
+          image: true
         }
       })
       return {
         ...post,
-        authorName: AuthorData.fullname || 'Unknown author',
-        authorPic: AuthorData.image || 'https://i.pravatar.cc/150?img=68'
+        author
       }
     })
   )

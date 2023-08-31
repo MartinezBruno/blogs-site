@@ -1,12 +1,13 @@
 import prisma from '@/lib/prismadb'
 import NextAuth from 'next-auth/next'
 import GoogleProvider from 'next-auth/providers/google'
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env
 
 const handler = NextAuth({
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      clientId: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET
     })
   ],
   callbacks: {

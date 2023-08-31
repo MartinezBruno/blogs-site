@@ -35,21 +35,23 @@ export const GET = async () => {
     const reviews = await prisma.review.findMany()
     const reviewsWithAuthorData = await Promise.all(
       reviews.map(async review => {
-        const AuthorData = await prisma.user.findUnique({
+        const author = await prisma.user.findUnique({
           where: {
             id: review.authorId
+          },
+          select: {
+            fullname: true,
+            image: true,
+            position: true
           }
         })
         return {
           ...review,
-          authorName: AuthorData.fullname || 'Unknown author',
-          authorPic: AuthorData.image || 'https://i.pravatar.cc/150?img=68',
-          authorPos: AuthorData.position || 'Unknown position'
+          author
         }
       })
     )
     if (!reviews) return NextResponse.error(new Error('Reviews not found'))
-    console.log(reviewsWithAuthorData)
     return NextResponse.json(reviewsWithAuthorData)
   } catch (error) {
     console.error(error)
