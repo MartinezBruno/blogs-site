@@ -1,9 +1,10 @@
 'use client'
 
 import 'swiper/css'
+import 'swiper/css/grid'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Grid, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import BlogCard from './BlogCard'
@@ -14,7 +15,7 @@ const BlogsSwiper = ({ blogs }) => {
   return (
     <Swiper
       className='!pt-4 !pb-20 !px-1 rounded-lg'
-      modules={[Navigation, Pagination]}
+      modules={[Navigation, Pagination, Grid]}
       spaceBetween={45}
       slidesPerView={1.1}
       breakpoints={{
@@ -31,20 +32,19 @@ const BlogsSwiper = ({ blogs }) => {
       navigation={{
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
+      }}
+      grid={{
+        fill: 'row',
+        rows: 2
       }}>
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-16'>
         {blogs?.map(
           (blog, index) =>
-            index % slidesPerView === 0 && (
-              <SwiperSlide
-                key={blog.id}
-                className='!flex flex-col gap-3'>
-                <BlogCard blog={blog} />
-                {blogs[index + 1] && <BlogCard blog={blogs[index + 1]} />}
-              </SwiperSlide>
-            )
+            <SwiperSlide
+              key={blog.id}
+              className='!flex flex-col gap-3'>
+              <BlogCard blog={blog} />
+            </SwiperSlide>
         )}
-      </div>
       <div className="swiper-button-next">
         <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
           <path d="M8.89827 22.2083H27.9804L19.6437 30.545C18.9774 31.2112 18.9774 32.3046 19.6437 32.9708C20.3099 33.6371 21.3862 33.6371 22.0524 32.9708L33.3104 21.7129C33.9766 21.0466 33.9766 19.9704 33.3104 19.3041L22.0695 8.02914C21.7504 7.70925 21.317 7.52948 20.8651 7.52948C20.4133 7.52948 19.9799 7.70925 19.6608 8.02914C18.9945 8.69539 18.9945 9.77164 19.6608 10.4379L27.9804 18.7916H8.89827C7.95869 18.7916 7.18994 19.5604 7.18994 20.5C7.18994 21.4396 7.95869 22.2083 8.89827 22.2083Z" fill="#25313C" />
