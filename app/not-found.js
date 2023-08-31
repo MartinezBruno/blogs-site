@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 const PageNotFound = () => {
   return (
     <div className='grid place-items-center gap-6 py-40 max-w-[374px] mx-auto'>
@@ -7,8 +5,8 @@ const PageNotFound = () => {
       <p className='text-black text-xl leading-[163%]'>
         Do you want to join us or write blogs? Well... this is not the way :/
       </p>
-      <Image
-        src='https://firebasestorage.googleapis.com/v0/b/instablogs-2ea40.appspot.com/o/bob%201.png?alt=media&token=5cea547a-2949-47c8-968e-4eaf63f67196'
+      <img
+        src='https://khqlvuznkpdsactdscrc.supabase.co/storage/v1/object/sign/Images/Static%20Images/bob%201-min.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvU3RhdGljIEltYWdlcy9ib2IgMS1taW4ucG5nIiwiaWF0IjoxNjkzNTAyODAyLCJleHAiOjI2OTM1MDI4MDF9.j1QKSGVbJxETYmmP-ORjAsz_DGwBNicOx_UlcUbCtiE&t=2023-08-31T17%3A26%3A46.607Z'
         width={374}
         height={367}
         alt='404'

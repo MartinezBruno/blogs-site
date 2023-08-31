@@ -1,8 +1,9 @@
 import RateUsSlides from './RateUsSlides'
+import { BASE_URL } from '@/app/services/config'
 
 const getReviews = async () => {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/api/rateus`, {
+    const res = await fetch(`${BASE_URL}/api/rateus`, {
       next: { revalidate: 3600 }
       // cache: 'no-cache'
     })
