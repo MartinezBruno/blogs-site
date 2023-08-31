@@ -1,8 +1,8 @@
 'use client'
 
+import 'swiper/css'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
 
 import Image from 'next/image'
 
@@ -46,16 +46,16 @@ const RateUsSlides = ({ reviews }) => {
             <Stars rating={review.rating} />
             <p className='mt-4 mb-11'>{review.content}</p>
             <div className='flex gap-4 max-h-[60px]'>
-              <Image
-                src={review.authorPic}
+              <img
+                src={review.author.image}
                 alt='Review author image'
                 width={60}
                 height={60}
                 className='rounded-full'
               />
               <div>
-                <h4 className='heading4 text-black'>{review.authorName}</h4>
-                <p className='text-black'>{review.authorPos}</p>
+                <h4 className='heading4 text-black'>{review.author.fullname}</h4>
+                <p className='text-black'>{review.author.position ?? 'Unknown position'}</p>
               </div>
             </div>
           </div>

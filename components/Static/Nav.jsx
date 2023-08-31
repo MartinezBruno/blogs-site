@@ -1,7 +1,6 @@
 'use client'
 
 import { getProviders, signIn, signOut, useSession } from 'next-auth/react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -97,7 +96,7 @@ const Nav = () => {
           {session?.user
             ? (
               <div className=''>
-                <Image
+                <img
                   src={session?.user.image}
                   width={37}
                   height={37}
@@ -193,7 +192,7 @@ const Nav = () => {
         {session?.user
           ? (
             <div className='flex max-h-[37px]'>
-              <Image
+              <img
                 src={session?.user.image}
                 width={37}
                 height={37}
