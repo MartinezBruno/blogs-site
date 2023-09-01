@@ -1,16 +1,14 @@
-import { BASE_URL } from '@/app/services/config'
+import { BASE_URL } from '../services/config'
 import BlogsSwiper from './BlogsSwiper'
 
 const getBlogs = async () => {
-  try {
-    const res = await fetch(`${BASE_URL}/api/posts`, {
-      cache: 'no-cache'
-    })
-    const data = await res.json()
-    return data
-  } catch (error) {
-    console.error(error)
+  const res = await fetch(`${BASE_URL}/api/posts`)
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('NO ANDA NAADAAAA')
   }
+  const data = await res.json()
+  return data
 }
 
 const BlogsPage = async () => {
