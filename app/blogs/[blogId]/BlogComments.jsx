@@ -29,7 +29,7 @@ const BlogComments = async ({ blogId }) => {
                   <figcaption className="flex items-center justify-center space-x-3">
                       <img className="rounded-full w-9 h-9" src={comment.author.image} alt="profile picture" />
                       <div className="space-y-0.5 font-medium dark:text-white text-left">
-                        <div>{comment.author.fullname}</div>
+                        <div>{comment.author.fullname ?? 'Unknown author'}</div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">{comment.author.position ?? ''}</div>
                       </div>
                   </figcaption>
