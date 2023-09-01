@@ -3,13 +3,11 @@ import Link from 'next/link'
 import styles from './BlogCard.module.css'
 
 const BlogCard = ({ blog }) => {
-  console.log(blog.author.image)
   return (
     <Link href={`/blogs/${blog.id}`}>
       <div
-        key={blog.id}
         className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] min-h-[540px] swiper-card'>
-        {blog.banner !== null && (
+        {blog.banner && (
           <div className='overflow-hidden rounded-lg'>
             <img
               src={blog.banner}

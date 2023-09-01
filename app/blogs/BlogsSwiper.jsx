@@ -38,7 +38,7 @@ const BlogsSwiper = ({ blogs }) => {
         rows: 2
       }}>
         {blogs?.map(
-          (blog, index) =>
+          (blog) =>
             <SwiperSlide
               key={blog.id}
               className='!flex flex-col gap-3'>
