@@ -29,6 +29,9 @@ const BlogCard = ({ blog }) => {
               alt='user photo'
               className='rounded-full'
             />
+            <span className='text-text_gray text-sm font-semibold'>
+              {blog.author.fullname ?? 'Unknown author'} | {new Date(blog.createdAt).toDateString()}
+            </span>
           </div>
         </div>
       </div>
