@@ -3,7 +3,6 @@ import Link from 'next/link'
 import styles from './BlogCard.module.css'
 
 const BlogCard = ({ blog }) => {
-  console.log(blog)
   return (
     <Link href={`/blogs/${blog.id}`}>
       <div
