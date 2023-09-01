@@ -1,4 +1,4 @@
-import { BASE_URL } from '../services/config'
+import { BASE_URL } from '@/app/services/config'
 import BlogsSwiper from './BlogsSwiper'
 
 const getBlogs = async () => {
