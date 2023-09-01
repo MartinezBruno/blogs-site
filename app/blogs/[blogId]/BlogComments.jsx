@@ -19,20 +19,22 @@ const BlogComments = async ({ blogId }) => {
   return (
     <>
       {comments && (
-        <div className='flex flex-col justify-center items-center'>
-          <h3>Comments</h3>
-          <div>
+        <div className='w-full lg:w-3/4 mx-auto transition-all duration-300 sm:px-14 md:px-28 flex flex-col justify-center items-start mt-5 gap-3'>
+          <h3 className='text-2xl font-bold'>Comments</h3>
+          <div className='border border-gray-200'>
             {comments.map((comment) => (
-              <div key={comment.id}>
-                <img
-                  src={comment.author.image}
-                  alt={comment.author.fullname}
-                  width={40}
-                  height={40}
-                />
-                <p>{comment.content}</p>
-                <p>{comment.author.fullname}</p>
-              </div>
+                <figure key={comment.id} className="flex flex-col items-start justify-center p-8 text-center bg-white border-b rounded-t-lg md:rounded-t-none md:rounded-tl-lg dark:bg-gray-800 dark:border-gray-700">
+                  <blockquote className="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
+                    <p className="my-4">{comment.content}</p>
+                  </blockquote>
+                  <figcaption className="flex items-center justify-center space-x-3">
+                      <img className="rounded-full w-9 h-9" src={comment.author.image} alt="profile picture" />
+                      <div className="space-y-0.5 font-medium dark:text-white text-left">
+                        <div>{comment.author.fullname}</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">{comment.author.position ?? ''}</div>
+                      </div>
+                  </figcaption>
+                </figure>
             ))}
           </div>
         </div>
