@@ -1,14 +1,12 @@
 'use client'
 
+import 'swiper/css'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-import Image from 'next/image'
 
 import ArrowLeft from '../Icons/ArrowLeft'
 import ArrowRight from '../Icons/ArrowRight'
 import Stars from '../Icons/Stars'
-import 'swiper/css'
 import './Slides.css'
 
 const RateUsSlides = ({ reviews }) => {
@@ -38,7 +36,7 @@ const RateUsSlides = ({ reviews }) => {
         delay: 5000,
         disableOnInteraction: false
       }}>
-      {reviews.map((review, index) => (
+      {reviews?.map((review, index) => (
         <SwiperSlide
           key={index}
           className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] border'>
@@ -46,16 +44,16 @@ const RateUsSlides = ({ reviews }) => {
             <Stars rating={review.rating} />
             <p className='mt-4 mb-11'>{review.content}</p>
             <div className='flex gap-4 max-h-[60px]'>
-              <Image
-                src={review.authorPic}
+              <img
+                src={review.authorImage ?? 'https://via.placeholder.com/150'}
                 alt='Review author image'
-                width={56}
-                height={56}
+                width={60}
+                height={60}
                 className='rounded-full'
               />
               <div>
-                <h4 className='heading4 text-black'>{review.authorName}</h4>
-                <p className='text-black'>{review.authorPos}</p>
+                <h4 className='heading4 text-black'>{review.authorName ?? 'Unknown author'}</h4>
+                <p className='text-black'>{review.authorPosition ?? 'Unknown position'}</p>
               </div>
             </div>
           </div>

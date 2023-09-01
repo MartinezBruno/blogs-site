@@ -1,8 +1,15 @@
+import { BASE_URL } from '@/app/services/config'
+import axios from 'axios'
+
 import Hero from '@/components/Home/Hero'
+
 import AboutUs from '@/components/Home/AboutUs'
 import RateUs from '@/components/Home/RateUs'
 
-export default function Home() {
+if (process.env.NODE_ENV !== 'production') axios.defaults.baseURL = `${BASE_URL}/api`
+else axios.defaults.baseURL = `${BASE_URL}/api`
+
+export default function Home () {
   return (
     <main>
       <Hero />

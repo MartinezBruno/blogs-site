@@ -40,9 +40,35 @@
 
 .nav-link {
   /* Mobile nav button */
-  @apply text-base font-bold tracking-[175%] underline;
+  @apply text-base font-bold tracking-[175%] uppercase border-b p-3;
 }
 
 .c-container {
   @apply max-w-[1275px] mx-auto p-8;
+}
+
+#navbar {
+  animation: headerAnim linear both;
+  animation-timeline: scroll();
+  animation-range: 0 200px;
+}
+
+#navbar.homepage {
+  animation: headerAnimHome linear both;
+  animation-timeline: scroll();
+  animation-range: 0 200px;
+}
+
+@keyframes headerAnim {
+  to {
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.45);
+  }
+}
+
+@keyframes headerAnimHome {
+  to {
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.15);
+  }
 }

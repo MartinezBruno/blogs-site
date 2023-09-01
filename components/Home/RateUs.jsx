@@ -1,15 +1,16 @@
+import { BASE_URL } from '@/app/services/config'
 import RateUsSlides from './RateUsSlides'
 
 const getReviews = async () => {
-  try {
-    const res = await fetch(`${process.env.BASE_URL}/api/rateus`, {
-      next: { revalidate: 3600 }
-    })
-    const data = await res.json()
-    return data
-  } catch (error) {
-    console.error('Error on fetch',error)
+  const res = await fetch(`${BASE_URL}/api/rateus`, {
+    cache: 'no-cache'
+  })
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('NO ANDA NADAAAAA')
   }
+  const data = await res.json()
+  return data
 }
 
 const RateUs = async () => {
