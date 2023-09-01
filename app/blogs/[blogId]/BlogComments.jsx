@@ -15,7 +15,6 @@ const getBlogComments = async (blogId) => {
 
 const BlogComments = async ({ blogId }) => {
   const comments = await getBlogComments(blogId)
-  console.log(comments)
   return (
     <>
       {comments && (

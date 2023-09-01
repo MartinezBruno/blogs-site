@@ -9,7 +9,7 @@ const BlogCard = ({ blog }) => {
       <div
         key={blog.id}
         className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] min-h-[540px] swiper-card'>
-        {blog.image !== null && (
+        {blog.banner !== null && (
           <div className='overflow-hidden rounded-lg'>
             <img
               src={blog.banner}
