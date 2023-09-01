@@ -3,8 +3,8 @@ import { BASE_URL } from '@/app/services/config'
 const getBlogComments = async (blogId) => {
   try {
     const response = await fetch(`${BASE_URL}/api/posts/comments/${blogId}`, {
-      next: { revalidate: 3600 }
-      // cache: 'no-cache'
+      // next: { revalidate: 3600 }
+      cache: 'no-cache'
     })
     const data = await response.json()
     return data

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styles from './BlogCard.module.css'
 
 const BlogCard = ({ blog }) => {
+  console.log(blog.author.image)
   return (
     <Link href={`/blogs/${blog.id}`}>
       <div
@@ -24,7 +25,7 @@ const BlogCard = ({ blog }) => {
           <p className={styles.blog_content}>{blog.content}</p>
           <div className='flex justify-start items-center gap-2 mt-11'>
             <img
-              src={blog.author.image}
+              src={blog.author?.image ?? 'https://via.placeholder.com/150'}
               width={40}
               height={40}
               alt='user photo'
