@@ -3,11 +3,12 @@ import BlogsSwiper from './BlogsSwiper'
 
 const getBlogs = async () => {
   const res = await fetch(`${BASE_URL}/api/posts`, {
-    cache: 'no-cache'
+    next: { revalidate: 3600 }
+    // cache: 'no-cache'
   })
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error('NO ANDA NAADAAAA')
+    throw new Error('Error fetching blogs')
   }
   const data = await res.json()
   return data

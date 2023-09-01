@@ -23,7 +23,7 @@ const BlogCard = ({ blog }) => {
           <p className={styles.blog_content}>{blog.content}</p>
           <div className='flex justify-start items-center gap-2 mt-11'>
             <img
-              src={blog.author?.image ?? 'https://via.placeholder.com/150'}
+              src={blog.authorImage ?? 'https://via.placeholder.com/150'}
               width={40}
               height={40}
               alt='user photo'
