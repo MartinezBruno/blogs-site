@@ -51,9 +51,6 @@ const RateUsSlides = ({ reviews }) => {
                 height={60}
                 className='rounded-full'
               />
-              <div>
-                <p className='text-black'>{review.author.position ?? 'Unknown position'}</p>
-              </div>
             </div>
           </div>
         </SwiperSlide>
