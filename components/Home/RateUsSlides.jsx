@@ -45,7 +45,7 @@ const RateUsSlides = ({ reviews }) => {
             <p className='mt-4 mb-11'>{review.content}</p>
             <div className='flex gap-4 max-h-[60px]'>
               <img
-                src={review.author.image}
+                src={review.author?.image ?? 'https://via.placeholder.com/150'}
                 alt='Review author image'
                 width={60}
                 height={60}
