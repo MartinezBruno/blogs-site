@@ -45,6 +45,7 @@ export const GET = async () => {
             position: true
           }
         })
+        console.log('Rate us author', author)
         return {
           ...review,
           author
