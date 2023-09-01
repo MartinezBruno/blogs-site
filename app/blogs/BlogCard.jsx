@@ -30,7 +30,7 @@ const BlogCard = ({ blog }) => {
               className='rounded-full'
             />
             <span className='text-text_gray text-sm font-semibold'>
-              {blog.author.fullname !== undefined ? blog.author.fullname : 'Unknown author'} | {new Date(blog.createdAt).toDateString()}
+              {blog.authorName ?? 'Unknown author'} | {new Date(blog.createdAt).toDateString()}
             </span>
           </div>
         </div>

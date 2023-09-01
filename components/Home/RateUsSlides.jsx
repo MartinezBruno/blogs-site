@@ -45,15 +45,15 @@ const RateUsSlides = ({ reviews }) => {
             <p className='mt-4 mb-11'>{review.content}</p>
             <div className='flex gap-4 max-h-[60px]'>
               <img
-                src={review.author ? review.author.image : 'https://via.placeholder.com/150'}
+                src={review.authorImage ?? 'https://via.placeholder.com/150'}
                 alt='Review author image'
                 width={60}
                 height={60}
                 className='rounded-full'
               />
               <div>
-                <h4 className='heading4 text-black'>{review.author.fullname !== undefined ? review.author.fullname : 'Unknown author'}</h4>
-                <p className='text-black'>{review.author.position !== undefined ? review.author.position : 'Unknown position'}</p>
+                <h4 className='heading4 text-black'>{review.authorName ?? 'Unknown author'}</h4>
+                <p className='text-black'>{review.authorPosition ?? 'Unknown position'}</p>
               </div>
             </div>
           </div>

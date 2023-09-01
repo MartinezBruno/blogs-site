@@ -20,7 +20,8 @@ export const GET = async () => {
       })
       return {
         ...post,
-        author
+        authorName: author.fullname,
+        authorImage: author.image
       }
     })
   )

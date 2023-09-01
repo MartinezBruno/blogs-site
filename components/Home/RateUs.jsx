@@ -2,7 +2,9 @@ import { BASE_URL } from '@/app/services/config'
 import RateUsSlides from './RateUsSlides'
 
 const getReviews = async () => {
-  const res = await fetch(`${BASE_URL}/api/rateus`)
+  const res = await fetch(`${BASE_URL}/api/rateus`, {
+    cache: 'no-cache'
+  })
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('NO ANDA NADAAAAA')
