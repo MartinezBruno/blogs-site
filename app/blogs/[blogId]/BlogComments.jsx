@@ -3,8 +3,8 @@ import { BASE_URL } from '@/app/services/config'
 const getBlogComments = async (blogId) => {
   try {
     const response = await fetch(`${BASE_URL}/api/posts/comments/${blogId}`, {
-      // next: { revalidate: 3600 }
-      cache: 'no-cache'
+      next: { revalidate: 3600 }
+      // cache: 'no-cache'
     })
     const data = await response.json()
     return data
@@ -17,7 +17,7 @@ const BlogComments = async ({ blogId }) => {
   const comments = await getBlogComments(blogId)
   return (
     <>
-      {comments && (
+      {comments.length >= 1 && (
         <div className='w-full lg:w-3/4 mx-auto transition-all duration-300 sm:px-14 md:px-28 flex flex-col justify-center items-start mt-5 gap-3'>
           <h3 className='text-2xl font-bold'>Comments</h3>
           <div className='border border-gray-200'>
