@@ -18,7 +18,8 @@ export const GET = async (request, { params }) => {
           },
           select: {
             fullname: true,
-            image: true
+            image: true,
+            position: true
           }
         })
         return {
