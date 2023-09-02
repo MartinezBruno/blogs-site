@@ -1,10 +1,23 @@
+/* eslint-disable camelcase */
 import Provider from '@/components/Provider'
 import Footer from '@/components/Static/Footer'
 import Nav from '@/components/Static/Nav'
-import { Inter } from 'next/font/google'
+import { Mulish, PT_Serif } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const muslish = Mulish({
+  weight: ['400', '600', '700', '800'],
+  styles: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-mulish'
+})
+
+// eslint-disable-next-line no-unused-vars
+const ptSerif = PT_Serif({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-pt-serif'
+})
 
 export const metadata = {
   title: 'InstaBlogs',
@@ -15,7 +28,7 @@ export const metadata = {
 export default function RootLayout ({ children }) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} h-screen`}>
+      <body className={`h-screen ${muslish.className}`}>
         <Provider>
           <Nav />
           {children}

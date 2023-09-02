@@ -73,22 +73,22 @@ const Nav = () => {
             />
           </svg>
         </Link>
-        <div className='flex justify-end items-center w w-full gap-10 relative'>
+        <div className='flex justify-end items-center w-full gap-10 relative'>
           <Link
             href='#about-us'
-            className=' font-semibold'
+            className=' font-bold'
             style={{ color: svgFillColor }}>
             About Us
           </Link>
           <Link
             href='#support'
-            className='font-semibold'
+            className='font-bold'
             style={{ color: svgFillColor }}>
             Support
           </Link>
           <Link
             href='/blogs'
-            className={`font-semibold ${currentRoute === '/blogs' && 'underline underline-offset-[12px]'
+            className={`font-bold ${currentRoute === '/blogs' && 'underline underline-offset-[12px]'
               }`}
             style={{ color: svgFillColor }}>
             Blog

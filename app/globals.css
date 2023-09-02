@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=PT+Serif:wght@400;700&display=swap');
-
 * {
-  font-family: 'Mulish', sans-serif;
+  font-family: var(--font-mulish);
   scroll-behavior: smooth;
   word-wrap: break-word;
 }
