@@ -40,9 +40,9 @@ const PostBlogComment = ({ blogId }) => {
     e.preventDefault()
     if (comment.trim().length < 1) {
       handleMessage('not empty')
+      return
     }
     const postCommentStatus = await postComment(blogId, comment, session?.user.email)
-    console.log(postCommentStatus)
     if (postCommentStatus) {
       setComment('')
       handleMessage('success')
