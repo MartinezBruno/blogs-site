@@ -24,16 +24,16 @@ const BlogComments = async ({ blogId }) => {
             {comments.map((comment) => {
               const formattedComment = JSON.stringify(comment.content.replace(/\n/g, '<br/>'))
               return (
-                <figure key={comment.id} className="flex flex-col items-start justify-center p-8 text-center bg-white border-b rounded-t-lg md:rounded-t-none md:rounded-tl-lg dark:bg-gray-800 dark:border-gray-700">
-                  <blockquote className="mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
+                <figure key={comment.id} className="flex flex-col items-start justify-center p-8 text-center bg-white border-b rounded-t-lg md:rounded-t-none md:rounded-tl-lg">
+                  <blockquote className="mb-4 text-gray-500 lg:mb-8">
                     <p className="my-4 text-start w-full" dangerouslySetInnerHTML={{ __html: JSON.parse(formattedComment) }}></p>
                   </blockquote>
                   <figcaption className="w-full flex justify-end min-[460px]:justify-between items-end flex-wrap">
                     <div className='flex flex-wrap items-center justify-end space-x-3'>
                       <img className="rounded-full w-9 h-9" src={comment.author.image} alt="profile picture" />
-                        <div className="space-y-0.5 font-medium dark:text-white text-end min-[460px]:text-left">
+                        <div className="space-y-0.5 font-medium text-end min-[460px]:text-left">
                           <div>{comment.author.fullname ?? 'Unknown author'}</div>
-                          <div className="text-sm text-gray-500 dark:text-gray-400">{comment.author.position ?? ''}</div>
+                          <div className="text-sm text-gray-500">{comment.author.position ?? ''}</div>
                         </div>
                     </div>
                     <span className='text-gray-500 flex items-center justify-center'>{new Date(comment.createdAt).toDateString()}</span>
