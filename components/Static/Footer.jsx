@@ -37,6 +37,7 @@ const Footer = () => {
       <div className='c-container flex flex-col flex-wrap lg:flex-row gap-6'>
         <Link
           href='/'
+          title='Instablogs'
           className='basis-[20%]'>
           <svg
             xmlns='http://www.w3.org/2000/svg'

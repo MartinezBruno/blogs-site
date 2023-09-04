@@ -6,7 +6,15 @@
   font-family: var(--font-mulish);
   scroll-behavior: smooth;
   word-wrap: break-word;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 .heading1 {
   @apply text-5xl font-extrabold leading-[normal];
@@ -38,7 +46,7 @@
 
 .nav-link {
   /* Mobile nav button */
-  @apply text-base font-bold tracking-[175%] uppercase border-b p-3;
+  @apply text-lg font-semibold leading-[171%];
 }
 
 .c-container {

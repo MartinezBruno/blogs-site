@@ -42,7 +42,7 @@ const Nav = () => {
       id='navbar'>
       {/* Desktop nav */}
       <div className='sm:flex w-full justify-between items-center hidden c-container !py-6'>
-        <Link href='/'>
+        <Link href='/' title='Instablogs'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='37'
@@ -75,16 +75,16 @@ const Nav = () => {
         </Link>
         <div className='flex justify-end items-center w-full gap-10 relative'>
           <Link
-            href='#about-us'
+            href='/#about-us'
             className=' font-bold'
             style={{ color: svgFillColor }}>
             About Us
           </Link>
           <Link
-            href='#support'
+            href='/#opinions'
             className='font-bold'
             style={{ color: svgFillColor }}>
-            Support
+            Opinions
           </Link>
           <Link
             href='/blogs'
@@ -157,7 +157,7 @@ const Nav = () => {
             svgFillColor={svgFillColor}
           />
         </div>
-        <Link href='/'>
+        <Link href='/' title='Instablogs'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='auto'
