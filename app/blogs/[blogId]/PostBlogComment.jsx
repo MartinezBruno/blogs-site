@@ -1,8 +1,8 @@
 'use client'
 
 import axios from 'axios'
-import { getProviders, signIn, useSession } from 'next-auth/react'
-import { useEffect, useState } from 'react'
+import { signIn, useSession } from 'next-auth/react'
+import { useState } from 'react'
 
 const postComment = async (blogId, comment, userEmail) => {
   try {
@@ -20,7 +20,6 @@ const postComment = async (blogId, comment, userEmail) => {
 
 const PostBlogComment = ({ blogId }) => {
   const { data: session } = useSession()
-  const [providers, setProviders] = useState(null)
   const [comment, setComment] = useState('')
   const [message, setMessage] = useState({
     type: '',
@@ -84,31 +83,18 @@ const PostBlogComment = ({ blogId }) => {
     }, 2000)
   }
 
-  useEffect(() => {
-    const setProvidersData = async () => {
-      const providers = await getProviders()
-      setProviders(providers)
-    }
-    setProvidersData()
-  }, [])
-
   return (
     <section className='mt-8 w-full lg:w-3/4 mx-auto sm:px-14 md:px-28'>
       {!session?.user
         ? (
         <div className='flex flex-col gap-2 items-start'>
           <p>Please sign in to post a comment</p>
-          {providers &&
-            Object.values(providers).map(provider => (
-              <button
-                type='button'
-                key={provider.name}
-                onClick={() => signIn(provider.id)}
-                className='text-base text-white font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 bg-yellow hover:opacity-70 transition-[background-color] ease-in-out'
-              >
-                Get access
-              </button>
-            ))}
+            <button
+              type='button'
+              onClick={() => signIn('google')}
+              className='text-base text-white font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 bg-yellow hover:opacity-70 transition-[background-color] ease-in-out'>
+              Get access
+            </button>
         </div>
           )
         : (

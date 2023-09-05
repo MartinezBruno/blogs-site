@@ -1,6 +1,6 @@
 'use client'
 
-import { getProviders, signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -11,7 +11,6 @@ const Nav = () => {
   const { data: session } = useSession()
   const currentRoute = usePathname()
 
-  const [providers, setProviders] = useState(null)
   const [toggleDropdown, setToggleDropdown] = useState(false)
   const [toggleMobileMenu, setToggleMobileMenu] = useState(false)
 
@@ -25,12 +24,6 @@ const Nav = () => {
   }
 
   useEffect(() => {
-    const setProvidersData = async () => {
-      const providers = await getProviders()
-      setProviders(providers)
-    }
-    setProvidersData()
-
     const color = pathname === '/' ? '#fff' : '#000'
     setSvgFillColor(color)
   }, [pathname])
@@ -132,26 +125,20 @@ const Nav = () => {
               </div>
               )
             : (
-              <>
-                {providers &&
-                  Object.values(providers).map(provider => (
-                    <button
-                      type='button'
-                      key={provider.name}
-                      onClick={() => signIn(provider.id)}
-                      className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
-                      style={{ color: svgFillColor }}>
-                      Get access
-                    </button>
-                  ))}
-              </>
+                <button
+                  type='button'
+                  onClick={() => signIn('google')}
+                  className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
+                  style={{ color: svgFillColor }}>
+                  Get access
+                </button>
               )}
         </div>
       </div>
 
       {/* Mobile Nav */}
-      <div className='sm:hidden w-full flex justify-between relative p-3'>
-        <div className='basis-[108px] my-auto'>
+      <div className='sm:hidden w-full flex justify-between relative c-container'>
+        <div className='my-auto'>
           <Hamburger
             toggleMenu={handleToggleMobileMenu}
             svgFillColor={svgFillColor}
@@ -228,19 +215,13 @@ const Nav = () => {
             </div>
             )
           : (
-            <>
-              {providers &&
-                Object.values(providers).map(provider => (
-                  <button
-                    type='button'
-                    key={provider.name}
-                    onClick={() => signIn(provider.id)}
-                    style={{ color: svgFillColor }}
-                    className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'>
-                    Get access
-                  </button>
-                ))}
-            </>
+              <button
+                type='button'
+                onClick={() => signIn('google')}
+                style={{ color: svgFillColor }}
+                className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'>
+                Get access
+              </button>
             )}
         <MobileNav
           isActive={toggleMobileMenu}

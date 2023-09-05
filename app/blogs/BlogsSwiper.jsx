@@ -16,11 +16,12 @@ const BlogsSwiper = ({ blogs }) => {
     <Swiper
       className='!pt-4 !pb-20 !px-1 rounded-lg'
       modules={[Navigation, Pagination, Grid]}
-      spaceBetween={45}
+      spaceBetween={25}
       slidesPerView={1.1}
       breakpoints={{
         780: {
-          slidesPerView
+          slidesPerView,
+          spaceBetween: 45
         },
         1200: {
           slidesPerView: slidesPerView + 1
