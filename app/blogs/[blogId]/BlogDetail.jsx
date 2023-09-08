@@ -2,7 +2,7 @@ import { BASE_URL } from '@/app/services/config'
 
 const getBlogDetail = async blogId => {
   const res = await fetch(`${BASE_URL}/api/posts/${blogId}`, {
-    next: { revalidate: 3600 }
+    next: { revalidate: 360 }
     // cache: 'no-cache'
   })
   const data = await res.json()
