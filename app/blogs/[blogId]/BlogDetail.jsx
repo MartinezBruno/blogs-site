@@ -11,6 +11,7 @@ const getBlogDetail = async blogId => {
 
 const BlogDetail = async ({ blogId }) => {
   const blogDetail = await getBlogDetail(blogId)
+  const formattedContent = JSON.stringify(blogDetail.content.replace(/\n/g, '<br/>'))
   return (
     <article className='flex flex-col items-center'>
       <h1 className='font-extrabold text-2xl md:text-5xl '>{blogDetail.title}</h1>
@@ -34,7 +35,7 @@ const BlogDetail = async ({ blogId }) => {
         className='object-cover w-full max-w-[1000px] max-h-[470px] mb-9'
       />
       <div className='w-full lg:w-3/4 transition-all duration-300 sm:px-14 md:px-28'>
-        <p className='text-text_gray md:text-lg lg:text-xl leading-[130%]' dangerouslySetInnerHTML={{ __html: JSON.stringify(blogDetail.content).replace(/^"(.*)"$/, '$1').replace(/\\n/g, '<br/>') }}>
+        <p className='text-text_gray md:text-lg lg:text-xl leading-[130%]' dangerouslySetInnerHTML={{ __html: JSON.parse(formattedContent) }}>
         </p>
         <hr className='my-5 mx-7' />
       </div>

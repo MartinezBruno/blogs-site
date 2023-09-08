@@ -6,15 +6,15 @@ const BlogCard = ({ blog }) => {
   return (
     <Link href={`/blogs/${blog.id}`}>
       <div
-        className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] min-h-[540px] swiper-card'>
+        className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] min-h-[490px] flex flex-col swiper-card'>
         {blog.banner && (
-          <div className='overflow-hidden rounded-lg'>
+          <div className='overflow-hidden rounded-lg flex-[1_0_100%] flex'>
             <img
               src={blog.banner}
-              width={640}
-              height={480}
+              width='unset'
+              height='unset'
               alt={blog.title}
-              className='object-cover w-full blog-img'
+              className='object-cover object-center blog-img aspect-video'
             />
           </div>
         )}
