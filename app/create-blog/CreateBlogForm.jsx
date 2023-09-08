@@ -129,7 +129,7 @@ const CreateBlogForm = ({ user }) => {
           <textarea name="content" id="content" placeholder='Type something' className='border p-3 w-full min-h-[155px] lg:min-h-[310px] transition-[height] duration-500' onChange={handleOnChange} value={blog.content} onFocus={handleFocus}></textarea>
           {errors.content && <span className='text-red-500'>{errors.content}</span>}
         </div>
-        <button disabled={loading} type="submit" className='text-base font-bold leading-[150%] rounded-[5px] py-2 px-3 bg-yellow disabled:bg-green-500 transition-[background-color,height] ease-in-out'>
+        <button disabled={loading} type="submit" className='text-white text-base font-bold leading-[150%] rounded-[5px] py-2 px-3 bg-yellow disabled:bg-green-500 transition-[background-color,height] ease-in-out'>
           {loading
             ? (
             <span>
