@@ -14,7 +14,7 @@ const CreateBlog = async () => {
         </div>
           )
         : (
-        <CreateBlogForm userEmail={session.user.email}/>
+        <CreateBlogForm user={session.user}/>
           )}
     </section>
   )
