@@ -53,6 +53,10 @@
   @apply max-w-[1275px] mx-auto p-8;
 }
 
+.dropdown_link {
+  @apply text-base font-bold leading-[171%] px-3 py-1 text-start hover:bg-yellow last:hover:bg-red-600 hover:text-white w-full;
+}
+
 #navbar {
   animation: headerAnim linear both;
   animation-timeline: scroll();
