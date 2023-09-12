@@ -26,7 +26,7 @@ const BlogComments = async ({ blogId }) => {
               return (
                 <figure key={comment.id} className="flex flex-col items-start justify-center p-8 text-center bg-white border-b rounded-t-lg md:rounded-t-none md:rounded-tl-lg">
                   <blockquote className="mb-4 text-gray-500 lg:mb-8">
-                    <p className="my-4 text-start w-full" dangerouslySetInnerHTML={{ __html: JSON.parse(formattedComment) }}></p>
+                    <p className="my-4 text-start w-full break-all" dangerouslySetInnerHTML={{ __html: JSON.parse(formattedComment) }}></p>
                   </blockquote>
                   <figcaption className="w-full flex justify-end min-[460px]:justify-between items-end flex-wrap">
                     <div className='flex flex-wrap items-center justify-end space-x-3'>
