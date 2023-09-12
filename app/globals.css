@@ -46,7 +46,10 @@
 
 .nav-link {
   /* Mobile nav button */
-  @apply text-lg font-semibold leading-[171%];
+  @apply text-lg font-semibold leading-[171%] transition-[margin];
+}
+.nav-link:focus {
+  @apply ml-2;
 }
 
 .c-container {

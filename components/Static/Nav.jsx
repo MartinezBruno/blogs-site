@@ -23,6 +23,11 @@ const Nav = () => {
     else document.body.style.overflow = 'hidden'
   }
 
+  const handleClickLink = () => {
+    setToggleMobileMenu(false)
+    document.body.style.overflow = 'unset'
+  }
+
   useEffect(() => {
     const color = pathname === '/' ? '#fff' : '#000'
     setSvgFillColor(color)
@@ -227,6 +232,7 @@ const Nav = () => {
         <MobileNav
           isActive={toggleMobileMenu}
           handleClose={handleToggleMobileMenu}
+          handleClickLink={handleClickLink}
         />
       </div>
     </nav>
