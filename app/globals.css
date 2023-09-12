@@ -46,11 +46,18 @@
 
 .nav-link {
   /* Mobile nav button */
-  @apply text-lg font-semibold leading-[171%];
+  @apply text-lg font-semibold leading-[171%] transition-[margin];
+}
+.nav-link:focus {
+  @apply ml-2;
 }
 
 .c-container {
   @apply max-w-[1275px] mx-auto p-8;
+}
+
+.dropdown_link {
+  @apply text-base font-bold leading-[171%] px-3 py-1 text-start hover:bg-yellow last:hover:bg-red-600 hover:text-white w-full;
 }
 
 #navbar {

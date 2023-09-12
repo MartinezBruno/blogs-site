@@ -5,7 +5,8 @@ const ArrowLeft = () => {
       width='41'
       height='41'
       viewBox='0 0 41 41'
-      fill='none'>
+      fill='none'
+      className="w-full h-auto">
       <rect
         width='41'
         height='41'

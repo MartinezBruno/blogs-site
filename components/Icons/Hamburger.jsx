@@ -1,11 +1,11 @@
 const HamburgerIcon = ({ toggleMenu, svgFillColor }) => {
   return (
     <svg
-      className='w-6 h-6 text-gray-800 cursor-pointer'
+      className='w-full h-auto text-gray-800 cursor-pointer'
       aria-hidden='true'
       xmlns='http://www.w3.org/2000/svg'
-      width='16'
-      height='12'
+      width='24'
+      height='24'
       fill='none'
       viewBox='0 0 16 12'
       onClick={toggleMenu}>
