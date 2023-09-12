@@ -3,7 +3,7 @@ import BlogsSwiper from './BlogsSwiper'
 
 const getBlogs = async () => {
   const res = await fetch(`${BASE_URL}/api/posts`, {
-    next: { revalidate: 3600 }
+    next: { revalidate: 360 }
     // cache: 'no-cache'
   })
   if (!res.ok) {

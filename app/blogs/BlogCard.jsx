@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import Image from 'next/image'
 import styles from './BlogCard.module.css'
 
 const BlogCard = ({ blog }) => {
@@ -9,12 +10,13 @@ const BlogCard = ({ blog }) => {
         className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] min-h-[490px] flex flex-col swiper-card'>
         {blog.banner && (
           <div className='overflow-hidden rounded-lg flex-[1_0_100%] flex'>
-            <img
+            <Image
               src={blog.banner}
-              width='unset'
-              height='unset'
+              width={300}
+              height={150}
+              loading='lazy'
               alt={blog.title}
-              className='object-cover object-center blog-img aspect-video'
+              className='w-full object-cover object-center blog-img aspect-video'
             />
           </div>
         )}
