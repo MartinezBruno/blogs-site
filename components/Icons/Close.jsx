@@ -1,13 +1,13 @@
 const Close = ({ handleClose }) => {
   return (
     <svg
-      className='w-6 h-6 text-gray-800'
+      className='w-full h-auto text-gray-800'
       aria-hidden='true'
       xmlns='http://www.w3.org/2000/svg'
       fill='none'
       viewBox='0 0 14 14'
-      height='auto'
-      width='auto'
+      height='24'
+      width='24'
       onClick={handleClose}>
       <path
         stroke='currentColor'

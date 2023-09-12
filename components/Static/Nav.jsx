@@ -41,7 +41,8 @@ const Nav = () => {
             width='37'
             height='74'
             viewBox='0 0 187 333'
-            fill='none'>
+            fill='none'
+            className='w-full h-auto'>
             <path
               d='M147.911 24.2337H51.4962C40.5325 24.2337 31.6447 31.9881 31.6447 41.5537V266.87C31.6447 276.435 40.5325 284.19 51.4962 284.19H147.911C158.875 284.19 167.762 276.435 167.762 266.87V41.5537C167.762 31.9881 158.875 24.2337 147.911 24.2337Z'
               stroke='#FBB500'
@@ -98,7 +99,7 @@ const Nav = () => {
                   onClick={() => setToggleDropdown(prev => !prev)}
                 />
                 {toggleDropdown && (
-                  <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
+                  <div className='absolute right-4 top-5 border border-gray-500 bg-white flex flex-col items-center'>
                     <Link
                       href='/profile'
                       className='dropdown_link'
@@ -117,7 +118,7 @@ const Nav = () => {
                         setToggleDropdown(false)
                         signOut()
                       }}
-                      className='mt-5 text-start'>
+                      className='dropdown_link'>
                       Sign Out
                     </button>
                   </div>
@@ -188,7 +189,7 @@ const Nav = () => {
                 onClick={() => setToggleDropdown(prev => !prev)}
               />
               {toggleDropdown && (
-                <div className='absolute right-4 top-5 border border-gray-500 bg-white p-3 flex flex-col'>
+                <div className='absolute right-12 top-14 border border-gray-500 bg-white flex flex-col'>
                   <Link
                     href='/profile'
                     className='dropdown_link'
@@ -207,7 +208,7 @@ const Nav = () => {
                       setToggleDropdown(false)
                       signOut()
                     }}
-                    className='mt-5 text-start'>
+                    className='dropdown_link'>
                     Sign Out
                   </button>
                 </div>
