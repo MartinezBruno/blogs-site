@@ -15,6 +15,11 @@
   display: none;
 }
 
+.fill_available {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: stretch;
+}
 
 .heading1 {
   @apply text-5xl font-extrabold leading-[normal];
@@ -84,4 +89,8 @@
     backdrop-filter: blur(8px);
     background-color: rgba(0, 0, 0, 0.15);
   }
+}
+
+.btn_profile {
+  @apply text-base font-bold px-3 py-1 bg-yellow hover:bg-yellow/75 text-white min-w-[110px] rounded-lg text-center;
 }
