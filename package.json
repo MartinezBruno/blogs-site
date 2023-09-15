@@ -31,7 +31,6 @@
     "eslint-plugin-n": "15.0.0 || 16.0.0 ",
     "eslint-plugin-promise": "6.0.0",
     "eslint-plugin-react": "7.33.2",
-    "prisma": "5.2.0",
-    "uuid": "9.0.0"
+    "prisma": "5.2.0"
   }
 }

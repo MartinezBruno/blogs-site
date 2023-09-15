@@ -5,6 +5,7 @@ import Spinner from '@/components/Icons/Spinner'
 import SuccessModal from '@/components/SuccessModal'
 import previewImage from '@/public/image-upload-preview.svg'
 import axios from 'axios'
+import Compressor from 'compressorjs'
 import { useRef, useState } from 'react'
 
 const postBlog = async (blog, image) => {
@@ -33,11 +34,12 @@ const CreateBlogForm = ({ user }) => {
     content: '',
     email: user.email
   })
-  const [errors, setErrors] = useState([{
-    title: '',
-    banner: '',
-    content: ''
-  }
+  const [errors, setErrors] = useState([
+    {
+      title: '',
+      banner: false,
+      content: ''
+    }
   ])
   const [loading, setLoading] = useState(false)
   const [showModal, setShowModal] = useState(false)
@@ -48,9 +50,20 @@ const CreateBlogForm = ({ user }) => {
 
     inputRef.current.onchange = () => {
       const file = inputRef.current.files[0]
-      const imageUrl = URL?.createObjectURL(file)
-      setBlog({ ...blog, banner: file })
-      setPreview(imageUrl)
+      console.log(file.size / 1000 / 1000 + 'MB')
+      if (file.size / 1000 / 1000 < 10) {
+        return new Compressor(file, {
+          quality: 0.6,
+          success (result) {
+            console.log(result.size / 1000 / 1000 + 'MB')
+            const imageUrl = URL?.createObjectURL(result)
+            setErrors({ ...errors, banner: false })
+            setBlog({ ...blog, banner: result })
+            setPreview(imageUrl)
+          }
+        })
+      }
+      setErrors({ ...errors, banner: true })
     }
   }
 
@@ -93,6 +106,10 @@ const CreateBlogForm = ({ user }) => {
     if (!errors) return setLoading(false)
 
     const imageUrl = await uploadImageAndGetURL({ file: blog.banner, userId: user.id })
+    if (!imageUrl) {
+      alert('Something went wrong while uploading your image, try again or contact us')
+      return setLoading(false)
+    }
     setBlog({ ...blog, banner: imageUrl })
 
     const post = await postBlog(blog, imageUrl)
@@ -117,30 +134,73 @@ const CreateBlogForm = ({ user }) => {
     <form className='lg:px-[205px]' onSubmit={handleSubmit}>
       <div className='mb-4 w-full flex flex-col gap-4'>
         <div>
-          <input type="text" name="title" placeholder="Title" className="border p-3 w-full" onChange={handleOnChange} value={blog.title}/>
+          <input
+            type='text'
+            name='title'
+            placeholder='Title'
+            className='border p-3 w-full'
+            onChange={handleOnChange}
+            value={blog.title}
+          />
           {errors.title && <span className='text-red-500'>{errors.title}</span>}
         </div>
-        <div onClick={handleImageClick} className='overflow-hidden'>
-          <input type="file" name="image" id="image" ref={inputRef} className='hidden'/>
-          <img src={preview} className='cursor-pointer aspect-video w-full object-cover object-center' alt='Banner image'/>
-          {errors.banner && <span className='text-red-500'>{errors.banner}</span>}
+        <div className='overflow-hidden'>
+          <div onClick={handleImageClick}>
+            <input
+              type='file'
+              name='image'
+              id='image'
+              ref={inputRef}
+              className='hidden'
+              accept='image/*'
+            />
+            <img
+              src={preview}
+              className='cursor-pointer aspect-video w-full object-cover object-center'
+              alt='Banner image'
+            />
+          </div>
+          <span className='text-xs text-gray-500'>
+            Recomended size: 1920x1080px - Max weight: 2MB
+          </span>
+          {errors.banner && (
+            <span className='text-red-500 block text-sm'>Your image should not weight more than 10MB</span>
+          )}
         </div>
         <div>
-          <textarea name="content" id="content" placeholder='Type something' className='border p-3 w-full min-h-[155px] lg:min-h-[310px] transition-[height] duration-500' onChange={handleOnChange} value={blog.content} onFocus={handleFocus}></textarea>
-          {errors.content && <span className='text-red-500'>{errors.content}</span>}
+          <textarea
+            name='content'
+            id='content'
+            placeholder='Type something'
+            className='border p-3 w-full min-h-[155px] lg:min-h-[310px] transition-[height] duration-500'
+            onChange={handleOnChange}
+            value={blog.content}
+            onFocus={handleFocus}></textarea>
+          {errors.content && (
+            <span className='text-red-500'>{errors.content}</span>
+          )}
         </div>
-        <button disabled={loading} type="submit" className='text-white text-base font-bold leading-[150%] rounded-[5px] py-2 px-3 bg-yellow disabled:bg-green-500 transition-[background-color,height] ease-in-out'>
+        <button
+          disabled={loading}
+          type='submit'
+          className='text-white text-base font-bold leading-[150%] rounded-[5px] py-2 px-3 bg-yellow disabled:bg-green-500 transition-[background-color,height] ease-in-out'>
           {loading
             ? (
-            <span>
-              Posting...
-              <Spinner />
-            </span>
+                <span>
+                  Posting...
+                  <Spinner />
+                </span>
               )
-            : 'Post your blog!'}
+            : (
+                'Post your blog!'
+              )}
         </button>
       </div>
-      <SuccessModal showModal={showModal} closeModal={closeModal} blogId={blogId} />
+      <SuccessModal
+        showModal={showModal}
+        closeModal={closeModal}
+        blogId={blogId}
+      />
     </form>
   )
 }

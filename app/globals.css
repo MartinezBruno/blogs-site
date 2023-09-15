@@ -94,3 +94,14 @@
 .btn_profile {
   @apply text-base font-bold px-3 py-1 bg-yellow hover:bg-yellow/75 text-white min-w-[110px] rounded-lg text-center;
 }
+
+#blog_article picture {
+  width: 100%;
+  max-width: 1000px;
+  max-height: 470px;
+  aspect-ratio: 16/9;
+  margin-bottom: 2.25rem;
+}
+#blog_article picture img {
+  @apply object-cover object-center w-full !h-full;
+}

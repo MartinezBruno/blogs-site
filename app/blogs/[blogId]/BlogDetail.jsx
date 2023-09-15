@@ -1,9 +1,9 @@
 import { BASE_URL } from '@/app/services/config'
-import OptimizedImage from 'image-optimizer-component'
+import OptimizedImage from '@/components/OptimizedImage'
 
 const getBlogDetail = async (blogId) => {
   const res = await fetch(`${BASE_URL}/api/posts/${blogId}`, {
-    next: { revalidate: 360 },
+    next: { revalidate: 360 }
     // cache: 'no-cache'
   })
   const data = await res.json()
@@ -16,7 +16,7 @@ const BlogDetail = async ({ blogId }) => {
     blogDetail.content.replace(/\n/g, '<br/>')
   )
   return (
-    <article className='flex flex-col items-center'>
+    <article className='flex flex-col items-center' id='blog_article'>
       <h1 className='font-extrabold text-2xl md:text-5xl '>
         {blogDetail.title}
       </h1>
@@ -29,14 +29,11 @@ const BlogDetail = async ({ blogId }) => {
           className='rounded-full'
         />
         <span className='text-text_gray text-sm font-semibold'>
-          {blogDetail.authorName} | {new Date(blogDetail.createdAt).toDateString()}
+          {blogDetail.authorName} |{' '}
+          {new Date(blogDetail.createdAt).toDateString()}
         </span>
       </div>
-      <OptimizedImage
-        src={blogDetail.banner}
-        alt={blogDetail.title}
-        className='object-cover w-full max-w-[1000px] max-h-[470px] mb-9'
-      />
+      <OptimizedImage src={blogDetail.banner} alt={blogDetail.title} />
       {/* <img
         src={blogDetail.banner}
         width={1920}
@@ -48,7 +45,7 @@ const BlogDetail = async ({ blogId }) => {
         <p
           className='text-text_gray md:text-lg lg:text-xl leading-[130%]'
           dangerouslySetInnerHTML={{
-            __html: JSON.parse(formattedContent),
+            __html: JSON.parse(formattedContent)
           }}></p>
         <hr className='my-5 mx-7' />
       </div>
