@@ -4,7 +4,7 @@ import styles from './Footer.module.css'
 const companyLinks = [
   {
     name: 'About Us',
-    link: '/about-us'
+    link: '/#about-us'
   },
   {
     name: 'Blogs',
@@ -12,7 +12,7 @@ const companyLinks = [
   },
   {
     name: 'Support',
-    link: '/support'
+    link: '/#support'
   }
 ]
 const customerServiceLinks = [
