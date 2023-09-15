@@ -1,11 +1,11 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { getServerSession } from 'next-auth/next'
+import ProfileButtons from './ProfileButtons'
 
 const Profile = async () => {
   const { user } = await getServerSession(authOptions)
   return (
     <section className='c-container mt-28'>
-      <pre className='mt-7'>{JSON.stringify(user, null, 2)}</pre>
       {/* Profile section */}
       <div className='flex gap-3 lg:gap-10'>
         <img
@@ -22,10 +22,7 @@ const Profile = async () => {
           <p className='text-text_gray font-semibold leading-[150%] text-sm md:text-lg lg:text-2xl'>
             {user.pos}, {user.bio}
           </p>
-          <div className='flex gap-2 items-stretch justify-start'>
-            <button className='btn_profile'>Edit</button>
-            <button className='btn_profile'>Create new blog</button>
-          </div>
+          <ProfileButtons />
         </div>
       </div>
     </section>
