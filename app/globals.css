@@ -5,14 +5,23 @@
 * {
   font-family: var(--font-mulish);
   scroll-behavior: smooth;
-  word-wrap: break-word;
-
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
-::-webkit-scrollbar {
-  display: none;
+html {
+    scrollbar-gutter: stable;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #95a5a6;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #efb208;
 }
 
 .fill_available {
