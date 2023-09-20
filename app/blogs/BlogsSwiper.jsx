@@ -14,7 +14,7 @@ const BlogsSwiper = ({ blogs }) => {
   const slidesPerView = 2
   return (
     <Swiper
-      className='!pt-4 !pb-20 !px-1 rounded-lg'
+      className='!pt-4 !pb-20 !px-5 rounded-lg'
       modules={[Navigation, Pagination, Grid]}
       spaceBetween={25}
       slidesPerView={1.1}
