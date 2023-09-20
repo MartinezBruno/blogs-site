@@ -22,3 +22,20 @@ export const PATCH = async (request, { params }) => {
     return NextResponse.json({ error }, { status: 404 })
   }
 }
+
+export const GET = async (request, { params }) => {
+  try {
+    const { userId } = params
+    const user = await prisma.user.findUnique({
+      where: {
+        username: userId
+      }
+    })
+    if (!user) return NextResponse.error(new Error('User not found'))
+
+    return NextResponse.json(user)
+  } catch (error) {
+    console.error(error)
+    return NextResponse.json({ error }, { status: 404 })
+  }
+}

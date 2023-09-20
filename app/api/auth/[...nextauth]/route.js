@@ -22,7 +22,7 @@ export const authOptions = {
           await prisma.user.create({
             data: {
               email: profile.email,
-              username: profile.name.replace(' ', '').toLowerCase(),
+              username: profile.name.replace(' ', '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
               fullname: profile.name,
               image: profile.picture
             }
@@ -42,6 +42,7 @@ export const authOptions = {
         })
 
         session.user.id = user.id
+        session.user.username = user.username
         session.user.fullname = user.fullname
         session.user.pos = user.position ?? ''
         session.user.bio = user.bio ?? ''

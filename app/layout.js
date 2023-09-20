@@ -1,9 +1,13 @@
 /* eslint-disable camelcase */
+import axios from 'axios'
+import { Mulish, PT_Serif } from 'next/font/google'
+import './globals.css'
+
+import { BASE_URL } from '@/app/services/config'
+
 import Provider from '@/components/Provider'
 import Footer from '@/components/Static/Footer'
 import Nav from '@/components/Static/Nav'
-import { Mulish, PT_Serif } from 'next/font/google'
-import './globals.css'
 
 const muslish = Mulish({
   weight: ['400', '600', '700', '800'],
@@ -24,6 +28,9 @@ export const metadata = {
   description:
     'InstaBlogs is a platform for sharing your thoughts and ideas with the world. It is a place where you can share your knowledge and experience with others.'
 }
+
+if (process.env.NODE_ENV !== 'production') axios.defaults.baseURL = `${BASE_URL}/api`
+else axios.defaults.baseURL = 'http://localhost:3000/api'
 
 export default function RootLayout ({ children }) {
   return (

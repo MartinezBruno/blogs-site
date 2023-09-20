@@ -40,6 +40,7 @@ export const GET = async () => {
             id: review.authorId
           },
           select: {
+            username: true,
             fullname: true,
             image: true,
             position: true
@@ -49,7 +50,8 @@ export const GET = async () => {
           ...review,
           authorName: author.fullname,
           authorImage: author.image,
-          authorPosition: author.position
+          authorPosition: author.position,
+          authorUsername: author.username
         }
       })
     )
