@@ -80,10 +80,40 @@ html::-webkit-scrollbar-thumb {
   animation-range: 0 200px;
 }
 
+@media (width <= 768px) {
+  #navbar > div {
+    animation: navPadding linear both;
+    animation-timeline: scroll();
+    animation-range: 0 200px;
+  }
+}
+@media (width >= 768px) {
+  #navbar svg,
+  #navbar img {
+    animation: logoHeight linear both;
+    animation-timeline: scroll();
+    animation-range: 0 200px;
+  }
+}
+
 #navbar.homepage {
   animation: headerAnimHome linear both;
   animation-timeline: scroll();
   animation-range: 0 200px;
+}
+
+@keyframes navPadding {
+  to {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
+}
+
+@keyframes logoHeight {
+  to {
+    width: 70%;
+    height: 70%;
+  }
 }
 
 @keyframes headerAnim {
@@ -111,13 +141,73 @@ html::-webkit-scrollbar-thumb {
   aspect-ratio: 16/9;
   margin-bottom: 2.25rem;
 }
-#blog_article picture img {
+#blog_article .blurred-img .img {
   @apply object-cover object-center w-full !h-full;
+  min-height: 350px;
+  max-height: 600px;
 }
 
-#user_comment:hover img, #user_rateus:hover img {
+#user_comment:hover img,
+#user_rateus:hover img {
   @apply transition-all duration-300 scale-110 cursor-pointer;
 }
-#user_comment:hover p, #user_rateus:hover p {
+#user_comment:hover p,
+#user_rateus:hover p {
   @apply transition-all duration-300 text-yellow;
+}
+
+#user_comment img,
+#user_rateus img {
+  @apply transition-all duration-300 scale-100;
+}
+
+.blurred-img img {
+  opacity: 0;
+}
+
+.blurred-img {
+  min-height: 350px;
+  width: 100%;
+  background-position: center;
+
+  filter: blur(8px);
+  transition: filter 0.3s ease-in-out;
+}
+
+.blurred-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: pulse 3s infinite;
+  background-color: white;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.blurred-img.loaded {
+  filter: none;
+}
+.blurred-img.loaded::before {
+  animation: none;
+  content: none;
+}
+
+.blurred-img img {
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.blurred-img.loaded img {
+  opacity: 1;
 }
