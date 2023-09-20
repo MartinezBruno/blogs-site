@@ -2,7 +2,9 @@ import { BASE_URL } from '@/app/services/config'
 import ProfileButtons from './ProfileButtons'
 
 const getUserInfo = async (username) => {
-  const res = await fetch(`${BASE_URL}/api/user/${username}`)
+  const res = await fetch(`${BASE_URL}/api/user/${username}`, {
+    cache: 'no-cache'
+  })
   const data = await res.json()
   return data
 }

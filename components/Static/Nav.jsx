@@ -99,7 +99,7 @@ const Nav = () => {
                   src={session?.user.image}
                   width={37}
                   height={37}
-                  className='rounded-full'
+                  className='rounded-full max-w-[40px]'
                   alt='profile icon'
                   onClick={() => setToggleDropdown(prev => !prev)}
                 />
@@ -189,7 +189,7 @@ const Nav = () => {
                 src={session?.user.image}
                 width={37}
                 height={37}
-                className='rounded-full'
+                className='rounded-full max-w-[40px]'
                 alt='profile icon'
                 onClick={() => setToggleDropdown(prev => !prev)}
               />
