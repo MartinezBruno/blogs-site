@@ -50,12 +50,12 @@ const CreateBlogForm = ({ user }) => {
 
     inputRef.current.onchange = () => {
       const file = inputRef.current.files[0]
-      console.log(file.size / 1000 / 1000 + 'MB')
+      console.log('Image first load', file.size / 1000 / 1000 + 'MB')
       if (file.size / 1000 / 1000 < 10) {
         return new Compressor(file, {
           quality: 0.6,
           success (result) {
-            console.log(result.size / 1000 / 1000 + 'MB')
+            console.log('Optimized image', result.size / 1000 / 1000 + 'MB')
             const imageUrl = URL?.createObjectURL(result)
             setErrors({ ...errors, banner: false })
             setBlog({ ...blog, banner: result })
@@ -161,7 +161,7 @@ const CreateBlogForm = ({ user }) => {
             />
           </div>
           <span className='text-xs text-gray-500'>
-            Recomended size: 1920x1080px - Max weight: 2MB
+            Recomended size: 1920x1080px - Max weight: 10MB
           </span>
           {errors.banner && (
             <span className='text-red-500 block text-sm'>Your image should not weight more than 10MB</span>
