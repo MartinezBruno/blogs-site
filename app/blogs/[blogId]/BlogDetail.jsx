@@ -22,7 +22,9 @@ const BlogDetail = async ({ blogId }) => {
         {blogDetail.title}
       </h1>
       <div className='flex justify-start items-center gap-2 my-3'>
-        <Link href={`/profile/${blogDetail.authorUsername}`} className='flex gap-3 items-center justify-start hover:opacity-70 transition-opacity'>
+        <Link
+          href={`/profile/${blogDetail.authorUsername}`}
+          className='flex gap-3 items-center justify-start hover:opacity-70 transition-opacity'>
           <img
             src={blogDetail.authorPic}
             width={40}
@@ -38,7 +40,7 @@ const BlogDetail = async ({ blogId }) => {
           {new Date(blogDetail.createdAt).toDateString()}
         </span>
       </div>
-      <OptimizedImage src={blogDetail.banner} alt={blogDetail.title} />
+        <OptimizedImage src={blogDetail.banner} alt={blogDetail.title} />
       {/* <img
         src={blogDetail.banner}
         width={1920}
@@ -46,9 +48,9 @@ const BlogDetail = async ({ blogId }) => {
         alt={blogDetail.title}
         className='object-cover w-full max-w-[1000px] max-h-[470px] mb-9'
       /> */}
-      <div className='w-full lg:w-3/4 transition-all duration-300 sm:px-14 md:px-28'>
+      <div className='w-full lg:w-3/4 transition-all duration-300 sm:px-14 md:px-28 mt-7'>
         <p
-          className='text-text_gray md:text-lg lg:text-xl leading-[130%]'
+          className='text-text_gray md:text-lg lg:text-xl leading-[130%] break-words'
           dangerouslySetInnerHTML={{
             __html: JSON.parse(formattedContent)
           }}></p>
