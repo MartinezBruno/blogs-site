@@ -2,11 +2,11 @@
 
 import { uploadImageAndGetURL } from '@/app/services/firebase.config'
 import Spinner from '@/components/Icons/Spinner'
-import SuccessModal from '@/components/SuccessModal'
 import previewImage from '@/public/image-upload-preview.svg'
 import axios from 'axios'
 import Compressor from 'compressorjs'
 import { useRef, useState } from 'react'
+import Swal from 'sweetalert2'
 
 const postBlog = async (blog, image) => {
   try {
@@ -42,8 +42,6 @@ const CreateBlogForm = ({ user }) => {
     }
   ])
   const [loading, setLoading] = useState(false)
-  const [showModal, setShowModal] = useState(false)
-  const [blogId, setBlogId] = useState('')
 
   const handleImageClick = () => {
     inputRef.current.click()
@@ -85,10 +83,6 @@ const CreateBlogForm = ({ user }) => {
     }
   }
 
-  const closeModal = () => {
-    setShowModal(false)
-  }
-
   const handleErrors = (blog) => {
     const errors = {}
     if (!blog.title) errors.title = 'Title is required'
@@ -114,10 +108,19 @@ const CreateBlogForm = ({ user }) => {
 
     const post = await postBlog(blog, imageUrl)
     if (!post.id) return alert('Something went wrong')
-    postSuccess(post)
+    Swal.fire({
+      title: 'Success!',
+      text: 'Your blog has been posted',
+      html: `You can see it <a href="/blog/${post.id}" class="text-blue-500">here</a>`,
+      icon: 'success',
+      confirmButtonColor: '#ffbb00',
+      timer: 5000,
+      timerProgressBar: true
+    })
+    postSuccess()
   }
 
-  const postSuccess = (post) => {
+  const postSuccess = () => {
     setBlog({
       title: '',
       banner: '',
@@ -126,8 +129,6 @@ const CreateBlogForm = ({ user }) => {
     })
     setPreview(previewImage.src)
     setLoading(false)
-    setShowModal(true)
-    setBlogId(post.id)
   }
 
   return (
@@ -196,11 +197,6 @@ const CreateBlogForm = ({ user }) => {
               )}
         </button>
       </div>
-      <SuccessModal
-        showModal={showModal}
-        closeModal={closeModal}
-        blogId={blogId}
-      />
     </form>
   )
 }
