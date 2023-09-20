@@ -106,7 +106,7 @@ const Nav = () => {
                 {toggleDropdown && (
                   <div className='absolute right-4 top-5 border border-gray-500 bg-white flex flex-col items-center'>
                     <Link
-                      href='/profile'
+                      href={`/profile/${session?.user.username}`}
                       className='dropdown_link'
                       onClick={() => setToggleDropdown(false)}>
                       My profile
@@ -196,7 +196,7 @@ const Nav = () => {
               {toggleDropdown && (
                 <div className='absolute right-12 top-14 border border-gray-500 bg-white flex flex-col'>
                   <Link
-                    href='/profile'
+                    href={`/profile/${session?.user.username}`}
                     className='dropdown_link'
                     onClick={() => setToggleDropdown(false)}>
                     My profile

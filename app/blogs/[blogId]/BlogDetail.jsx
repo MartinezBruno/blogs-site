@@ -1,5 +1,6 @@
 import { BASE_URL } from '@/app/services/config'
 import OptimizedImage from '@/components/OptimizedImage'
+import Link from 'next/link'
 
 const getBlogDetail = async (blogId) => {
   const res = await fetch(`${BASE_URL}/api/posts/${blogId}`, {
@@ -21,15 +22,19 @@ const BlogDetail = async ({ blogId }) => {
         {blogDetail.title}
       </h1>
       <div className='flex justify-start items-center gap-2 my-3'>
-        <img
-          src={blogDetail.authorPic}
-          width={40}
-          height={40}
-          alt='user photo'
-          className='rounded-full'
-        />
+        <Link href={`/profile/${blogDetail.authorUsername}`} className='flex gap-3 items-center justify-start hover:opacity-70 transition-opacity'>
+          <img
+            src={blogDetail.authorPic}
+            width={40}
+            height={40}
+            alt='user photo'
+            className='rounded-full'
+          />
+          <span className='text-text_gray text-sm font-semibold'>
+            {blogDetail.authorName} |{' '}
+          </span>
+        </Link>
         <span className='text-text_gray text-sm font-semibold'>
-          {blogDetail.authorName} |{' '}
           {new Date(blogDetail.createdAt).toDateString()}
         </span>
       </div>

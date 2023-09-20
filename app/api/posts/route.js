@@ -21,7 +21,8 @@ export const GET = async () => {
       return {
         ...post,
         authorName: author.fullname,
-        authorImage: author.image
+        authorImage: author.image,
+        autorUsername: author.username
       }
     })
   )

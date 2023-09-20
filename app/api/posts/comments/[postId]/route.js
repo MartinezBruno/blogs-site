@@ -17,6 +17,7 @@ export const GET = async (request, { params }) => {
             id: comment.authorId
           },
           select: {
+            username: true,
             fullname: true,
             image: true,
             position: true

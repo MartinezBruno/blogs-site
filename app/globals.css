@@ -8,7 +8,7 @@
 }
 
 html {
-    scrollbar-gutter: stable;
+  scrollbar-gutter: stable;
 }
 
 html::-webkit-scrollbar {
@@ -113,4 +113,11 @@ html::-webkit-scrollbar-thumb {
 }
 #blog_article picture img {
   @apply object-cover object-center w-full !h-full;
+}
+
+#user_comment:hover img, #user_rateus:hover img {
+  @apply transition-all duration-300 scale-110 cursor-pointer;
+}
+#user_comment:hover p, #user_rateus:hover p {
+  @apply transition-all duration-300 text-yellow;
 }

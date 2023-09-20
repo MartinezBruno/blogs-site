@@ -14,6 +14,12 @@ export const GET = async (request, { params }) => {
     const author = await prisma.user.findUnique({
       where: {
         id: post.authorId
+      },
+      select: {
+        username: true,
+        fullname: true,
+        image: true,
+        position: true
       }
     })
     if (!author) return NextResponse.error(new Error('Author not found'))
@@ -22,7 +28,8 @@ export const GET = async (request, { params }) => {
       ...post,
       authorName: author.fullname,
       authorPos: author.position,
-      authorPic: author.image
+      authorPic: author.image,
+      authorUsername: author.username
     }
 
     return NextResponse.json(response)

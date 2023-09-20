@@ -4,6 +4,7 @@ import 'swiper/css'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import Link from 'next/link'
 import ArrowLeft from '../Icons/ArrowLeft'
 import ArrowRight from '../Icons/ArrowRight'
 import Stars from '../Icons/Stars'
@@ -43,19 +44,25 @@ const RateUsSlides = ({ reviews }) => {
           <div className='flex flex-col m-10'>
             <Stars rating={review.rating} />
             <p className='mt-4 mb-11'>{review.content}</p>
-            <div className='flex gap-4 max-h-[60px]'>
-              <img
-                src={review.authorImage ?? 'https://via.placeholder.com/150'}
-                alt='Review author image'
-                width={60}
-                height={60}
-                className='rounded-full'
-              />
-              <div>
-                <h4 className='heading4 text-black'>{review.authorName ?? 'Unknown author'}</h4>
-                <p className='text-black'>{review.authorPosition ?? 'Unknown position'}</p>
+            <Link href={`/profile/${review.authorUsername}`}>
+              <div className='flex gap-4 max-h-[60px]' id='user_rateus'>
+                <img
+                  src={review.authorImage ?? 'https://via.placeholder.com/150'}
+                  alt='Review author image'
+                  width={60}
+                  height={60}
+                  className='rounded-full'
+                />
+                <div>
+                  <p className='heading4 text-black'>
+                    {review.authorName ?? 'Unknown author'}
+                  </p>
+                  <span className='text-black'>
+                    {review.authorPosition ?? 'Unknown position'}
+                  </span>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </SwiperSlide>
       ))}
