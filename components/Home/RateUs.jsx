@@ -3,7 +3,7 @@ import RateUsSlides from './RateUsSlides'
 
 const getReviews = async () => {
   const res = await fetch(`${BASE_URL}/api/rateus`, {
-    next: { revalidate: 360 }
+    next: { revalidate: 600 }
     // cache: 'no-cache'
   })
   if (!res.ok) {
