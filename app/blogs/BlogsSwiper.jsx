@@ -7,7 +7,7 @@ import 'swiper/css/pagination'
 import { Grid, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import BlogCard from './BlogCard'
+import BlogCard from '@/components/Blogs/BlogCard'
 import './BlogsSwiper.css'
 
 const BlogsSwiper = ({ blogs }) => {

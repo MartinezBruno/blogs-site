@@ -6,7 +6,7 @@ import styles from './BlogCard.module.css'
 const BlogCard = ({ blog }) => {
   return (
     <Link href={`/blogs/${blog.id}`}>
-      <div
+      <article
         className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] min-h-[490px] flex flex-col swiper-card'>
         {blog.banner && (
           <div className='overflow-hidden rounded-lg flex-[1_0_100%] flex'>
@@ -32,11 +32,11 @@ const BlogCard = ({ blog }) => {
               className='rounded-full'
             />
             <span className='text-text_gray text-sm font-semibold'>
-              {blog.authorName ?? 'Unknown author'} | {new Date(blog.createdAt).toDateString()}
+              {blog.authorName ?? 'Unknown author'} <span className=' hidden md:inline-block'> | {new Date(blog.createdAt).toDateString()}</span>
             </span>
           </div>
         </div>
-      </div>
+      </article>
     </Link>
   )
 }
