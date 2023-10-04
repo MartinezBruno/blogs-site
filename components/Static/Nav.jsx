@@ -75,13 +75,15 @@ const Nav = () => {
         <div className='flex justify-end items-center w-full gap-10 relative'>
           <Link
             href='/#about-us'
-            className=' font-bold'
+            className={`font-bold ${currentRoute === '/about-us' && 'underline underline-offset-[12px]'
+              }`}
             style={{ color: svgFillColor }}>
             About Us
           </Link>
           <Link
             href='/#opinions'
-            className='font-bold'
+            className={`font-bold ${currentRoute === '/opinions' && 'underline underline-offset-[12px]'
+              }`}
             style={{ color: svgFillColor }}>
             Opinions
           </Link>
@@ -230,6 +232,7 @@ const Nav = () => {
               </button>
             )}
         <MobileNav
+          currentRoute={currentRoute}
           isActive={toggleMobileMenu}
           handleClose={handleToggleMobileMenu}
           handleClickLink={handleClickLink}

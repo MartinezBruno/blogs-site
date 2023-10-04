@@ -196,6 +196,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .blurred-img.loaded {
+  min-height: unset;
   filter: none;
 }
 .blurred-img.loaded::before {

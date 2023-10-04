@@ -1,7 +1,7 @@
 import Close from '@/components/Icons/Close'
 import Link from 'next/link'
 
-const MobileNav = ({ isActive, handleClose, handleClickLink }) => {
+const MobileNav = ({ isActive, handleClose, handleClickLink, currentRoute }) => {
   return (
     <div
       id='mobile-nav'
@@ -9,13 +9,13 @@ const MobileNav = ({ isActive, handleClose, handleClickLink }) => {
         `${isActive ? 'bg-white z-10 translate-x-0 !duration-500' : '-translate-x-96'} absolute top-0 left-0 shadow-2xl shadow-black transition-all duration-[1.55s] ease-in-out p-8 w-2/4 h-screen`}>
       <Close handleClose={handleClose} />
       <div className='flex flex-col mt-5 w-full relative gap-3 px-4'>
-        <Link href='/#about-us' className='nav-link' onClick={handleClickLink}>
+        <Link href='/#about-us' className={`nav-link ${currentRoute === '/about-us' && 'underline underline-offset-[12px] ml-3'}`} onClick={handleClickLink}>
           About us
         </Link>
-        <Link href='/#opinions' className='nav-link' onClick={handleClickLink}>
+        <Link href='/#opinions' className={`nav-link ${currentRoute === '/opinions' && 'underline underline-offset-[12px] ml-3'}`} onClick={handleClickLink}>
           Opinions
         </Link>
-        <Link href={'/blogs'} className='nav-link' onClick={handleClickLink}>
+        <Link href={'/blogs'} className={`nav-link ${currentRoute === '/blogs' && 'underline underline-offset-[12px] ml-3'}`} onClick={handleClickLink}>
           Blog
         </Link>
       </div>
