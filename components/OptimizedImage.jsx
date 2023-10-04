@@ -10,6 +10,7 @@ export default function OptimizedImage ({ src, alt }) {
   const loaded = () => {
     blurredImageDiv.current.classList.add('loaded')
   }
+
   return (
     <div
       className='blurred-img'
@@ -47,12 +48,12 @@ export default function OptimizedImage ({ src, alt }) {
         alt={alt}
         width={1920}
         height={768}
-        onLoad={() => {
+        onLoad={(e) => {
           setTimeout(() => {
             loaded()
           }, 750)
         }}
-        className='object-contain object-center w-full h-auto aspect-video'
+        className='object-contain object-center w-full h-auto max-h-[720px] aspect-auto'
       />
     </div>
   )

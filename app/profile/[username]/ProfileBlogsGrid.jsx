@@ -2,6 +2,7 @@
 
 import BlogCard from '@/components/Blogs/BlogCard'
 import { useEffect, useState } from 'react'
+import './ProfileBlogsGrid.css'
 
 const ProfileBlogsGrid = ({ blogs }) => {
   const allBlogs = blogs.length
@@ -27,11 +28,11 @@ const ProfileBlogsGrid = ({ blogs }) => {
 
   return (
     <section
-      className='grid grid-cols-3 md:gap-7 lg:gap-11'>
+      className='grid sm:grid-cols-2 md:grid-cols-3 gap-7 lg:gap-11'>
       {blogsToShow.map((blog) => (
-        <article key={blog.id}>
+        <div key={blog.id} className={'blogGridCard'} >
           <BlogCard blog={blog} />
-        </article>
+        </div>
       ))}
     </section>
   )

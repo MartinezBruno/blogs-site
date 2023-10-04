@@ -1,27 +1,26 @@
-import Link from 'next/link'
-
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from './BlogCard.module.css'
 
 const BlogCard = ({ blog }) => {
   return (
     <Link href={`/blogs/${blog.id}`}>
       <article
-        className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] min-h-[490px] flex flex-col swiper-card'>
+        className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'>
         {blog.banner && (
           <div className='overflow-hidden rounded-lg flex-[1_0_100%] flex'>
             <Image
               src={blog.banner}
-              width={300}
-              height={150}
+              width={400}
+              height={400}
               loading='lazy'
               alt={blog.title}
-              className='w-full object-cover object-center blog-img aspect-video'
+              className='w-full h-full object-cover object-center blog-img aspect-square'
             />
           </div>
         )}
         <div className='p-5'>
-          <h2 className='text-xl lg:text-2xl h-[2.6em] truncate mb-2'>{blog.title}</h2>
+          <h2 className='text-xl lg:text-2xl h-[2.6em] truncate whitespace-normal sm:whitespace-nowrap mb-2'>{blog.title}</h2>
           <p className={styles.blog_content}>{blog.content}</p>
           <div className='flex justify-start items-center gap-2 mt-11'>
             <img

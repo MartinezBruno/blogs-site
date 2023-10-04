@@ -18,7 +18,7 @@ const BlogDetail = async ({ blogId }) => {
   )
   return (
     <article className='flex flex-col items-center' id='blog_article'>
-      <h1 className='font-extrabold text-2xl md:text-5xl '>
+      <h1 className='font-extrabold text-2xl md:text-5xl text-center' style={{ textWrap: 'balance' }}>
         {blogDetail.title}
       </h1>
       <div className='flex justify-start items-center gap-2 my-3'>

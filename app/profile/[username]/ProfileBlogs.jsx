@@ -13,7 +13,7 @@ const ProfileBlogs = async ({ username }) => {
   const userBlogs = await getUserBlogs(username)
   return (
     <div className='mt-3 md:mt-10'>
-      <h3 className='font-bold text-xl md:text-3xl lg:text-[40px]'>Posts</h3>
+      <h3 className='font-bold text-xl md:text-3xl lg:text-[40px] mb-3'>Posts</h3>
       <ProfileBlogsGrid blogs={userBlogs} />
     </div>
   )
