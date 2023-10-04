@@ -60,7 +60,7 @@ html::-webkit-scrollbar-thumb {
 
 .nav-link {
   /* Mobile nav button */
-  @apply text-lg font-semibold leading-[171%] transition-[margin];
+  @apply text-[clamp(13px,6vw,29px)] font-semibold leading-[171%] transition-[margin];
 }
 .nav-link:focus {
   @apply ml-2;
