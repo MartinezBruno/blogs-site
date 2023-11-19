@@ -5,7 +5,7 @@ const Hero = () => {
     <section className='relative min-h-[687px] pt-16'>
       <div className='bg-[rgba(11,8,2,0.33)] absolute inset-0'>
         <Image
-          src='https://khqlvuznkpdsactdscrc.supabase.co/storage/v1/object/sign/Images/Static%20Images/Banner-min.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvU3RhdGljIEltYWdlcy9CYW5uZXItbWluLnBuZyIsImlhdCI6MTY5MzUwMjc2MCwiZXhwIjoyNjkzNTAyNzU5fQ.cDGtR2g-ALhDJI1GJsm23hwb7R1rspQY5I6Mfp372AM&t=2023-08-31T17%3A26%3A04.930Z'
+          src='https://firebasestorage.googleapis.com/v0/b/instablogs-82a89.appspot.com/o/Banner-min.png?alt=media&token=addb78a5-1622-462a-96d8-bf08ed5ee7c2'
           alt='Hero image'
           priority
           loading='eager'

@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app'
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA0XjuaueWb-GOlIwbaSCe7nNUceNPERBo',
-  authDomain: 'master-tuner-393901.firebaseapp.com',
-  projectId: 'master-tuner-393901',
-  storageBucket: 'master-tuner-393901.appspot.com',
-  messagingSenderId: '148608047987',
-  appId: '1:148608047987:web:10aabb1e459bb67f548306'
+  apiKey: 'AIzaSyB-K7Sbec6H8YeeXFg4t2z7Dd9LRiwPsX8',
+  authDomain: 'instablogs-82a89.firebaseapp.com',
+  projectId: 'instablogs-82a89',
+  storageBucket: 'instablogs-82a89.appspot.com',
+  messagingSenderId: '714583806826',
+  appId: '1:714583806826:web:717f60fd195dc7c7460b13'
 }
 
 const app = initializeApp(firebaseConfig)
