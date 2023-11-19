@@ -1,7 +1,7 @@
 import prisma from '@/lib/prismadb'
 import { NextResponse } from 'next/server'
 
-export const GET = async (request, { params }) => {
+export const GET = async (_request, { params }) => {
   try {
     const { id } = params
     const post = await prisma.post.findUnique({
@@ -33,6 +33,45 @@ export const GET = async (request, { params }) => {
     }
 
     return NextResponse.json(response)
+  } catch (error) {
+    console.error(error)
+    return NextResponse.json({ error }, { status: 404 })
+  }
+}
+
+export const DELETE = async (_request, { params }) => {
+  try {
+    const { id } = params
+    const post = await prisma.post.delete({
+      where: {
+        id
+      }
+    })
+    if (!post) return NextResponse.error(new Error('Post not found'))
+
+    return NextResponse.json({ message: 'Post deleted' })
+  } catch (error) {
+    console.error(error)
+    return NextResponse.json({ error }, { status: 404 })
+  }
+}
+
+export const PATCH = async (request, { params }) => {
+  try {
+    const { id } = params
+    const { title, content } = await request.body.json()
+    const post = await prisma.post.update({
+      where: {
+        id
+      },
+      data: {
+        title,
+        content
+      }
+    })
+    if (!post) return NextResponse.error(new Error('Post not found'))
+
+    return NextResponse.json({ message: 'Post updated' })
   } catch (error) {
     console.error(error)
     return NextResponse.json({ error }, { status: 404 })
