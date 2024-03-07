@@ -6,11 +6,12 @@ import styles from './BlogCard.module.css'
 
 const BlogCard = ({ blog, userId }) => {
   const { data: session } = useSession()
+  console.log(session?.user?.id, userId)
 
   return (
     <article className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'>
-      {session?.user?.id === userId && (
-        <HorizontalDots blogId={blog.id}/>
+      {session?.user?.id === userId && userId !== undefined && (
+        <HorizontalDots blogId={blog.id} />
       )}
       {blog.banner && (
         <Link href={`/blogs/${blog.id}`}>
