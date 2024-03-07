@@ -10,6 +10,9 @@ const HorizontalDots = ({ blogId }) => {
     await axios.delete(`/api/posts/${blogId}`)
     router.replace()
   }
+  const handleEdit = () => {
+    router.push(`/blogs/${blogId}/edit`)
+  }
   return (
     <div className='absolute right-0'>
       <svg
@@ -30,7 +33,7 @@ const HorizontalDots = ({ blogId }) => {
       </svg>
       {showMenu && (
         <div className='absolute right-6 top-9 bg-white flex flex-col'>
-          <span className='dropdown_link cursor-pointer'>Edit</span>
+          <span className='dropdown_link cursor-pointer' onClick={handleEdit}>Edit</span>
           <span className='dropdown_link cursor-pointer' onClick={handleDelete}>Delete</span>
         </div>
       )}

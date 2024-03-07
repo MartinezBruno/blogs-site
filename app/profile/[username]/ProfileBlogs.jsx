@@ -3,7 +3,8 @@ import ProfileBlogsGrid from './ProfileBlogsGrid'
 
 const getUserBlogs = async (username) => {
   const res = await fetch(`${BASE_URL}/api/posts/user/${username}`, {
-    next: { revalidate: 300 }
+    // next: { revalidate: 300 }
+    cache: 'no-cache'
   })
   const userBlogs = await res.json()
   return userBlogs

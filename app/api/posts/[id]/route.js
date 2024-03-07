@@ -42,13 +42,24 @@ export const GET = async (_request, { params }) => {
 export const DELETE = async (_request, { params }) => {
   try {
     const { id } = params
-    const post = await prisma.post.delete({
+    const post = await prisma.post.findUnique({
       where: {
         id
       }
     })
     if (!post) return NextResponse.error(new Error('Post not found'))
 
+    const comments = await prisma.comment.deleteMany({
+      where: {
+        postId: id
+      }
+    })
+    const postDel = await prisma.post.delete({
+      where: {
+        id
+      }
+    })
+    console.log({ comments, postDel })
     return NextResponse.json({ message: 'Post deleted' })
   } catch (error) {
     console.error(error)
@@ -56,10 +67,11 @@ export const DELETE = async (_request, { params }) => {
   }
 }
 
-export const PATCH = async (request, { params }) => {
+export const PUT = async (request, { params }) => {
   try {
     const { id } = params
-    const { title, content } = await request.body.json()
+    const { title, content } = await request.json()
+
     const post = await prisma.post.update({
       where: {
         id
