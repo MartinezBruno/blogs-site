@@ -8,6 +8,7 @@ import { BASE_URL } from '@/app/services/config'
 import Provider from '@/components/Provider'
 import Footer from '@/components/Static/Footer'
 import Nav from '@/components/Static/Nav'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const muslish = Mulish({
   weight: ['400', '600', '700', '800'],
@@ -39,6 +40,7 @@ export default function RootLayout ({ children }) {
         <Provider>
           <Nav />
           {children}
+          <SpeedInsights />
           <Footer />
         </Provider>
       </body>
