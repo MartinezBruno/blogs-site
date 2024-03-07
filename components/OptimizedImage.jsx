@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useRef } from 'react'
 
-export default function OptimizedImage ({ src, alt }) {
+export default function OptimizedImage ({ src, alt, className }) {
   // const isLocalImage = src.startsWith('/')
 
   const blurredImageDiv = useRef(null)
@@ -19,7 +19,8 @@ export default function OptimizedImage ({ src, alt }) {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'contain'
       }}
-      ref={blurredImageDiv}>
+      ref={blurredImageDiv}
+    >
       {/* <picture>
         <source
           srcSet={
@@ -53,7 +54,7 @@ export default function OptimizedImage ({ src, alt }) {
             loaded()
           }, 750)
         }}
-        className='object-contain object-center w-full h-auto max-h-[720px] aspect-auto'
+        className={`object-contain object-center w-full h-auto max-h-[720px] aspect-auto ${className}`}
       />
     </div>
   )
