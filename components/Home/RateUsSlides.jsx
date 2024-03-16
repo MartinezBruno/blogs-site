@@ -40,7 +40,7 @@ const RateUsSlides = ({ reviews }) => {
       {reviews?.map((review, index) => (
         <SwiperSlide
           key={index}
-          className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] border'>
+          className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] border dark:border-none dark:bg-[#000000]'>
           <div className='flex flex-col m-10'>
             <Stars rating={review.rating} />
             <p className='mt-4 mb-11'>{review.content}</p>
@@ -57,7 +57,7 @@ const RateUsSlides = ({ reviews }) => {
                   <p className='heading4 text-black'>
                     {review.authorName ?? 'Unknown author'}
                   </p>
-                  <span className='text-black'>
+                  <span className='text-black dark:text-white'>
                     {review.authorPosition ?? 'Unknown position'}
                   </span>
                 </div>

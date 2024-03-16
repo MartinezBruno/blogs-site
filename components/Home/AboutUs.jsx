@@ -21,10 +21,10 @@ const AboutUs = () => {
             className='object-cover w-full md:max-w-[55%] h-full'
           />
           <div className='basis-full'>
-            <h2 className={`${index % 2 && 'text-end'} text-xl lg:text-5xl font-extrabold text-yellow my-3`}>
+            <h2 className={`${index % 2 && 'text-end'} text-xl lg:text-5xl font-extrabold text-yellow dark:text-purple my-3`}>
               {article.title}
             </h2>
-            <p className='text-black font-semibold text-justify leading-[140%] tracking-[-0.26px] text-sm md:text-base lg:text-xl'>
+            <p className='text-black dark:text-white font-semibold text-justify leading-[140%] tracking-[-0.26px] text-sm md:text-base lg:text-xl'>
               {article.content.substring(0, 300)}...
             </p>
             <Link

@@ -11,7 +11,7 @@ const Hero = () => {
           loading='eager'
           width={1920}
           height={1080}
-          className='object-cover object-[top_0_right_-400px] md:object-[top_center] w-full h-full relative -z-20'
+          className='object-cover object-[top_0_right_-400px] md:object-[top_center] w-full h-full relative -z-20 dark:z-0'
         />
       </div>
       <div className='c-container relative'>
@@ -26,11 +26,11 @@ const Hero = () => {
             <input
               type='email'
               placeholder='Email'
-              className='py-[13px] px-4 border-[2px] border-[rgba(11,8,2,0.33)] rounded placeholder:text-black focus:outline-none focus:border-blue'
+              className='py-[13px] px-4 border-[2px] border-[rgba(11,8,2,0.33)] rounded placeholder:text-black focus:outline-none focus:border-blue bg-white'
             />
             <button
               type='submit'
-              className='text-white text-base font-bold leading-[150%] bg-yellow rounded px-6 py-3 hover:bg-yellow/90 transition-colors ease-in-out'>
+              className='text-white text-base font-bold leading-[150%] bg-yellow dark:bg-purple rounded px-6 py-3 hover:bg-yellow/90 hover:dark:bg-purple/90 transition-colors ease-in-out'>
               Get early access
             </button>
           </form>

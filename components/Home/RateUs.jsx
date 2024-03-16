@@ -18,7 +18,7 @@ const RateUs = async () => {
   const data = await getReviews()
   return (
     <section className='mt-[124px] scroll-mt-[125px]' id='opinions'>
-      <h4 className='heading2 text-black text-center mb-4'>Opinions about us</h4>
+      <h4 className='heading2 text-black dark:text-white text-center mb-4'>Opinions about us</h4>
       <RateUsSlides reviews={data} />
     </section>
   )
