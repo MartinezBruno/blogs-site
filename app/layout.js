@@ -9,6 +9,7 @@ import Provider from '@/components/Provider'
 import Footer from '@/components/Static/Footer'
 import Nav from '@/components/Static/Nav'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { ThemeProvider } from '@/components/Static/ThemeProvider'
 
 const muslish = Mulish({
   weight: ['400', '600', '700', '800'],
@@ -33,15 +34,19 @@ export const metadata = {
 if (process.env.NODE_ENV !== 'production') axios.defaults.baseURL = `${BASE_URL}/api`
 else axios.defaults.baseURL = 'http://localhost:3000/api'
 
-export default function RootLayout ({ children }) {
+export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={`h-screen ${muslish.className}`}>
         <Provider>
-          <Nav />
-          {children}
-          <SpeedInsights />
-          <Footer />
+          <ThemeProvider attribute='class' defaultTheme='system'>
+            <Nav />
+            <main className='dark:bg-[rgba(0,0,0,0.52)]'>
+              {children}
+            </main>
+            <SpeedInsights />
+            <Footer />
+          </ThemeProvider>
         </Provider>
       </body>
     </html>

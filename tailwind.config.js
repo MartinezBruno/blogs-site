@@ -5,6 +5,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
+  darkMode: ['class'],
   theme: {
     extend: {
       fontFamily: {
@@ -13,9 +14,10 @@ module.exports = {
       },
       colors: {
         black: '#25313C',
-        yellow: '#FB0',
+        yellow: '#FBB500',
         blue: '#5A4FF3',
-        text_gray: '#6D7D8B'
+        text_gray: '#6D7D8B',
+        purple: '#9747FF'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -24,5 +26,5 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [require('@tailwindcss/typography')]
 }
